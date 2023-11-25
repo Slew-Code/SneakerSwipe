@@ -1,83 +1,81 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, View } from 'react-native';
 import * as React from 'react';
+import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-function HomeScreen({ navigation }) {
+function Home() {
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button title="Go to Details" onPress={() => { 
-        /* 1. Navigate to the Details route with params */
-        navigation.navigate('Details', {itemId: 86,
-            otherParam: 'anything you want here',}); 
-      }}/>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Swipe on Sneakers here!</Text>
     </View>
   );
 }
 
-function DetailsScreen({ route, navigation}) {
-  /* 2. Get the param */
-  const { itemId, otherParam } = route.params;
+function Saved() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() =>
-          navigation.push('Details', {
-            itemId: Math.floor(Math.random() * 100),
-          })
-        }
-      />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button
-        title="Go back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
-      <Button
-        title="Update param"
-        onPress={() =>
-          navigation.setParams({
-            itemId: Math.floor(Math.random() * 100),
-          })
-        }
-      />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Saved Sneakers will appear here!</Text>
     </View>
   );
 }
 
-const Stack = createNativeStackNavigator();
+function Profile() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Profile settings here??</Text>
+    </View>
+  );
+}
 
-function App() {
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: '#e91e63',
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="search" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Saved"
+        component={Saved}
+        options={{
+          tabBarLabel: 'Saved',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="format-list-bulleted" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ headerShown: false }} 
-        />
-        <Stack.Screen 
-          name="Details" 
-          component={DetailsScreen} 
-          initialParams={{ itemId: 42 }}
-        />
-      </Stack.Navigator>
+      <MyTabs />
     </NavigationContainer>
   );
 }
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#adadad',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
