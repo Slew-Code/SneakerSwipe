@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 
+import styles from "./components/Home.style.js";
+
 function Home() {
   
   //Set  the state of the search query, initially empty
@@ -14,12 +16,25 @@ function Home() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Swipe on Sneakers here!</Text>
     
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        onChangeText={text => setSearchQuery(text)}
-        value={searchQuery}
-        placeholder="Search"
-      />
+      <View style={styles.searchContainer}>
+        <View style={styles.searchWrapper}>
+          <TextInput
+            style={styles.searchInput}
+            value={searchQuery}
+            onChangeText={(text) => setSearchQuery(text)}
+            placeholder='What are you looking for?'
+          />
+        </View>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
+          <Image
+            source={icons.search}
+            resizeMode='contain'
+            style={styles.searchBtnImage}
+          />
+        </TouchableOpacity>
+        */
+      </View>
+
     </View>
   );
 }
