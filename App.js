@@ -5,18 +5,24 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 
-import styles from "./components/Home.style.js";
-import { icons } from "./constants/icons.js";
+import styles from "./components/Home.style";
+//import { COLORS, icons, images, SIZES } from "./constants";
 
 function Home() {
   
   //Set  the state of the search query, initially empty
   const [searchQuery, setSearchQuery] = useState('');
 
+
+  const handleClick = () => {
+    console.log("clicked");
+  }
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View >
+      
       <Text>Swipe on Sneakers here!</Text>
-    
+
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
           <TextInput
@@ -26,12 +32,17 @@ function Home() {
             placeholder='What are you looking for?'
           />
         </View>
+
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}> 
+          <Ionicons name="search" size={25} />
+        </TouchableOpacity>
       
       </View>
 
     </View>
   );
 }
+
 function Saved() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -67,7 +78,7 @@ function MyTabs() {
             <Ionicons name="search" color={color} size={size} />
           ),
           headerTitle: "SneakerSwipe",
-        }}       
+        }}  
       />
       <Tab.Screen
         name="Saved"
