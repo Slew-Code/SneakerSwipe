@@ -21,7 +21,7 @@ function Home() {
   return (
     <View >
       
-      <Text>Swipe on Sneakers here!</Text>
+      <Text style={styles.header}>Swipe on Sneakers here!</Text>
 
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>

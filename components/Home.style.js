@@ -6,13 +6,18 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
     },
+    header: {
+        textAlign: "center",
+        paddingHorizontal: SIZES.medium,
+        marginTop: SIZES.small,
+    },
     searchContainer: {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
         marginTop: SIZES.large,
         height: 50,
-        paddingHorizontal: SIZES.small,
+        paddingHorizontal: SIZES.medium,
     },
     searchWrapper: {
         flex: 1,
