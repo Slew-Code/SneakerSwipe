@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { COLORS, FONT, SIZES } from "../constants/theme";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const styles = StyleSheet.create({
     container: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: "row",
         marginTop: SIZES.large,
-        height: 50,
+        height:50,
         paddingHorizontal: SIZES.medium,
     },
     searchWrapper: {
@@ -42,6 +43,33 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-});
+    cardContainer: {
+        backgroundColor: "red", 
+        width: "100%", 
+        height: "80%", 
+        marginTop: 30, 
+        padding: 20,
+    },
+    cardWrapper: {   
+        backgroundColor: '#4FD0E9',
+        borderRadius: SIZES.small,
+        width: "100%",
+        height: "100%",
+    },
+    card: {
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: "#E8E8E8",
+        backgroundColor: "white",
+        height: "100%", 
+        marginRight: 20,
+        marginLeft: -20,
+        justifyContent: "center",
+    },
+    text: {
+        textAlign: "center",
+        fontSize: 50,
+    }
+});  
 
 export default styles;

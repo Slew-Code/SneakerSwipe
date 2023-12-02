@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity,Image } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity,Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
+import Swiper from 'react-native-deck-swiper'
 
 import styles from "./components/Home.style";
 //import { COLORS, icons, images, SIZES } from "./constants";
@@ -12,15 +13,13 @@ function Home() {
   
   //Set  the state of the search query, initially empty
   const [searchQuery, setSearchQuery] = useState('');
-
-
+  
   const handleClick = () => {
     console.log("clicked");
   }
 
   return (
-    <View >
-      
+    <View>
       <Text style={styles.header}>Swipe on Sneakers here!</Text>
 
       <View style={styles.searchContainer}>
@@ -36,7 +35,29 @@ function Home() {
         <TouchableOpacity style={styles.searchBtn} onPress={handleClick}> 
           <Ionicons name="search" size={25} />
         </TouchableOpacity>
-      
+      </View>
+
+      <View style={styles.cardContainer}>
+        <View style={styles.cardWrapper}> 
+          <Swiper
+            cards={['1', '2', '3', '4', '5', '6', '7']}
+            renderCard={(card) => {
+              return (
+                <View style={styles.card}>
+                  <Text style={styles.text}>{card}</Text>
+                </View>
+              )
+            }}
+            onSwiped={(cardIndex) => { console.log(cardIndex) }}
+            onSwipedAll={() => { console.log('onSwipedAll') }}
+            cardIndex={0}
+            stackSize={3}
+            cardVerticalMargin={0}
+            marginBottom={500}
+            
+            >
+          </Swiper>
+        </View>
       </View>
 
     </View>
