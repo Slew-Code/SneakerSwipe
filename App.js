@@ -15,7 +15,7 @@ function Home() {
   //Set the state of the search query, initially empty
   const [searchQuery, setSearchQuery] = useState('');
 
-  //Set 
+  //Set the default search tab 
   const [activeJobType, setActiveJobType] = useState("Full-time");
   const jobTypes = ["Nike", "Adidas", "New Balance"];
   
