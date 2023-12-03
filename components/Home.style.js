@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         backgroundColor: "red", 
         width: "100%", 
-        height: "80%", 
+        height: "70%", 
         marginTop: 30, 
         padding: 20,
     },
@@ -69,7 +69,22 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         fontSize: 50,
-    }
+    },
+    tabsContainer: {
+        width: "100%",
+        marginTop: SIZES.medium,
+    },
+    tab: (activeJobType, item) => ({
+        paddingVertical: SIZES.small / 2,
+        paddingHorizontal: SIZES.small,
+        borderRadius: SIZES.medium,
+        borderWidth: 1,
+        borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    }),
+    tabText: (activeJobType, item) => ({
+        fontFamily: FONT.medium,
+        color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    }),
 });  
 
 export default styles;

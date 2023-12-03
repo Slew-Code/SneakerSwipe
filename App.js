@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
+
 import Swiper from 'react-native-deck-swiper'
 
 import styles from "./components/Home.style";
-//import { COLORS, icons, images, SIZES } from "./constants";
+import { SIZES } from "./constants/theme";
 
 function Home() {
   
-  //Set  the state of the search query, initially empty
+  //Set the state of the search query, initially empty
   const [searchQuery, setSearchQuery] = useState('');
+
+  //Set 
+  const [activeJobType, setActiveJobType] = useState("Full-time");
+  const jobTypes = ["Nike", "Adidas", "New Balance"];
   
   const handleClick = () => {
     console.log("clicked");
@@ -37,6 +42,28 @@ function Home() {
         </TouchableOpacity>
       </View>
 
+      <View style={styles.tabsContainer}>
+        <FlatList
+          data={jobTypes}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.tab(activeJobType, item)}
+              onPress={() => {
+                setActiveJobType(item);
+                //router.push(`/search/${item}`);
+                console.log("search tab pressed");
+              }}
+            >
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item}
+          contentContainerStyle={{ columnGap: SIZES.small }}
+          horizontal
+          centerContent
+        />
+      </View>
+
       <View style={styles.cardContainer}>
         <View style={styles.cardWrapper}> 
           <Swiper
@@ -53,7 +80,7 @@ function Home() {
             cardIndex={0}
             stackSize={3}
             cardVerticalMargin={0}
-            marginBottom={Dimensions.get('window').height * 0.4}
+            marginBottom={Dimensions.get('window').height * 0.50}
             >
           </Swiper>
         </View>
