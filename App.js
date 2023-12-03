@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity,Button } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
@@ -53,8 +53,7 @@ function Home() {
             cardIndex={0}
             stackSize={3}
             cardVerticalMargin={0}
-            marginBottom={500}
-            
+            marginBottom={Dimensions.get('window').height * 0.4}
             >
           </Swiper>
         </View>
