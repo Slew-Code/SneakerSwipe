@@ -67,7 +67,7 @@ function Home() {
       <View style={styles.cardContainer}>
         <View style={styles.cardWrapper}> 
           <Swiper
-            cards={['1', '2', '3', '4', '5', '6', '7']}
+            cards={['0','1', '2', '3', '4', '5', '6', '7']}
             renderCard={(card) => {
               return (
                 <View style={styles.card}>
@@ -75,8 +75,12 @@ function Home() {
                 </View>
               )
             }}
-            onSwiped={(cardIndex) => { console.log(cardIndex) }}
+            onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
+            onSwipedRight={(cardIndex) => { console.log(cardIndex + " Swiped Right") }}
             onSwipedAll={() => { console.log('onSwipedAll') }}
+            // onSwiping={} change colour of card based on card coordinates
+            onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
+            verticalSwipe={false}   
             cardIndex={0}
             stackSize={3}
             cardVerticalMargin={0}
