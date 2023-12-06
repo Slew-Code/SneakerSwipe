@@ -83,6 +83,45 @@ export default function Home() {
                         stackSize={3}
                         cardVerticalMargin={0}
                         marginBottom={Dimensions.get('window').height * 0.50}
+                        overlayLabels={{
+                            left: {
+                                title: 'NOPE',
+                                style: {
+                                    label: {
+                                        backgroundColor: 'red',
+                                        borderColor: 'black',
+                                        color: 'white',
+                                        borderWidth: 1
+                                    },
+                                    wrapper: {
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-end',
+                                        justifyContent: 'flex-start',
+                                        marginTop: 30,
+                                        marginLeft: -30
+                                    }
+                                }
+                            },
+                            right: {
+                                title: 'LIKE',
+                                style: {
+                                    label: {
+                                        backgroundColor: 'green',
+                                        borderColor: 'black',
+                                        color: 'white',
+                                        borderWidth: 1
+                                    },
+                                    wrapper: {
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-start',
+                                        justifyContent: 'flex-start',
+                                        marginTop: 30,
+                                        marginLeft: 30
+                                    }
+                                }
+                            }
+                        }}
+                        animateOverlayLabelsOpacity
                     >
                     </Swiper>
                 </View>
