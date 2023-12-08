@@ -8,7 +8,7 @@ import Swiper from 'react-native-deck-swiper'
 import styles from "./Home.style";
 import { SIZES } from "../../constants/theme";
 
-export default function Home() {
+export default function Home() {  
 
     //Set the state of the search query, initially empty
     const [searchQuery, setSearchQuery] = useState('');
@@ -98,7 +98,7 @@ export default function Home() {
                                         alignItems: 'flex-end',
                                         justifyContent: 'flex-start',
                                         marginTop: 30,
-                                        marginLeft: -30
+                                        marginLeft: -40
                                     }
                                 }
                             },
@@ -116,7 +116,7 @@ export default function Home() {
                                         alignItems: 'flex-start',
                                         justifyContent: 'flex-start',
                                         marginTop: 30,
-                                        marginLeft: 30
+                                        marginLeft: 0
                                     }
                                 }
                             }
