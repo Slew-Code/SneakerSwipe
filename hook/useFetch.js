@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {RAPID_API_KEY} from '@env'
 
-const rapidApiKey = RAPID_API_KEY;
+//import RAPID_API_KEY from '.env'
+//const rapidApiKey = RAPID_API_KEY;
 
 const useFetch = (endpoint, query) => {
     const [data, setData] = useState([]);
@@ -11,14 +11,14 @@ const useFetch = (endpoint, query) => {
 
     const options = {
         method: 'GET',
-        url: 'https://the-sneaker-database.p.rapidapi.com/${endpoint}',
-        params: {
-            limit: '10'
-        },
+        url: 'https://the-sneaker-database.p.rapidapi.com/sneakers',
         headers: {
-            'X-RapidAPI-Key': rapidApiKey,
+            'X-RapidAPI-Key': 'efc160b0fbmsha23e82489fd2de8p1072c0jsna12c339be54b',
             'X-RapidAPI-Host': 'the-sneaker-database.p.rapidapi.com'
-        }
+        },
+        params: {
+            ...query
+        },
     };
 
     const fetchData = async () => {
@@ -27,7 +27,7 @@ const useFetch = (endpoint, query) => {
         try {
             const response = await axios.request(options);
 
-            setData(response.data.data);
+            setData(response.data); //why data.data? 
             setIsLoading(false);
         } catch (error) {
             setError(error);

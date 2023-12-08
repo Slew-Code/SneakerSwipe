@@ -8,6 +8,8 @@ import Swiper from 'react-native-deck-swiper'
 import styles from "./Home.style";
 import { SIZES } from "../../constants/theme";
 
+import useFetch from "../../hook/useFetch";
+
 export default function Home() {  
 
     //Set the state of the search query, initially empty
@@ -17,6 +19,15 @@ export default function Home() {
     const [activeJobType, setActiveJobType] = useState("Full-time");
     const jobTypes = ["Nike", "Adidas", "New Balance"];
 
+    const { data, isLoading, error } = useFetch(
+        'getSneakers', {
+            limit: 10,
+        }
+    )
+
+    //data = {data};
+    console.log(data);
+ 
     const handleClick = () => {
         console.log("clicked");
     }
