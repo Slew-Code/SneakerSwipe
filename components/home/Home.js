@@ -3,6 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList } from 'r
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 
+
 import Swiper from 'react-native-deck-swiper'
 
 import styles from "./Home.style";
@@ -19,15 +20,20 @@ export default function Home() {
     const [activeJobType, setActiveJobType] = useState("Full-time");
     const jobTypes = ["Nike", "Adidas", "New Balance"];
 
+    /*
     const { data, isLoading, error } = useFetch(
         'getSneakers', {
             limit: 10,
         }
-    )
+    )*/
 
-    //data = {data};
-    console.log(data);
+    const { data, isLoading, error } = useFetch("search", {
+        query: 'React developer',
+        num_pages: 1,
+    });
  
+    console.log(data);
+
     const handleClick = () => {
         console.log("clicked");
     }
@@ -75,8 +81,10 @@ export default function Home() {
 
             <View style={styles.cardContainer}>
                 <View style={styles.cardWrapper}>
+                    
                     <Swiper
                         cards={['0', '1', '2', '3', '4', '5', '6', '7']}
+                        //cards={data}
                         renderCard={(card) => {
                             return (
                                 <View style={styles.card}>

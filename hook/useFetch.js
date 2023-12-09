@@ -9,6 +9,7 @@ const useFetch = (endpoint, query) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    /*
     const options = {
         method: 'GET',
         url: 'https://the-sneaker-database.p.rapidapi.com/sneakers',
@@ -19,6 +20,16 @@ const useFetch = (endpoint, query) => {
         params: {
             ...query
         },
+    };*/
+
+    const options = {
+        method: "GET",
+        url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+        headers: {
+            "X-RapidAPI-Key": 'efc160b0fbmsha23e82489fd2de8p1072c0jsna12c339be54b',
+            "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+        },
+        params: { ...query },
     };
 
     const fetchData = async () => {
@@ -27,7 +38,7 @@ const useFetch = (endpoint, query) => {
         try {
             const response = await axios.request(options);
 
-            setData(response.data); //why data.data? 
+            setData(response.data.data); //why data.data? 
             setIsLoading(false);
         } catch (error) {
             setError(error);
