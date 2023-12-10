@@ -3,7 +3,6 @@ import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList } from 'r
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 
-
 import Swiper from 'react-native-deck-swiper'
 
 import styles from "./Home.style";
@@ -31,8 +30,7 @@ export default function Home() {
         query: 'React developer',
         num_pages: 1,
     });
- 
-    console.log(data);
+    // /console.log(data);
 
     const handleClick = () => {
         console.log("clicked");
@@ -83,12 +81,21 @@ export default function Home() {
                 <View style={styles.cardWrapper}>
                     
                     <Swiper
-                        cards={['0', '1', '2', '3', '4', '5', '6', '7']}
-                        //cards={data}
+                        //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
+                        cards={data}
                         renderCard={(card) => {
+                            if (!card) {
+                                //return null; // Return null or a placeholder if sneaker data is not available
+                                return (
+                                    <View style={styles.card}>
+                                        <Text style={styles.text}>Loading...</Text>
+                                    </View>
+                                );
+                            }
+                            
                             return (
                                 <View style={styles.card}>
-                                    <Text style={styles.text}>{card}</Text>
+                                    <Text style={styles.text}>{card.job_title}</Text>
                                 </View>
                             )
                         }}
@@ -100,11 +107,12 @@ export default function Home() {
                         verticalSwipe={false}
                         cardIndex={0}
                         stackSize={3}
+                        infinite={true}
                         cardVerticalMargin={0}
                         marginBottom={Dimensions.get('window').height * 0.50}
                         overlayLabels={{
                             left: {
-                                title: 'NOPE',
+                                title: 'Nope',
                                 style: {
                                     label: {
                                         backgroundColor: 'red',
@@ -122,7 +130,7 @@ export default function Home() {
                                 }
                             },
                             right: {
-                                title: 'LIKE',
+                                title: 'Dope',
                                 style: {
                                     label: {
                                         backgroundColor: 'green',
@@ -140,7 +148,10 @@ export default function Home() {
                                 }
                             }
                         }}
-                        animateOverlayLabelsOpacity
+                        animateOverlayLabelsOpacity // labels fade in when you begin to swipe
+                        overlayOpacityHorizontalThreshold={Dimensions.get('window').width / 10} // the point at which the overlay can appear 
+                        // The range from which the opacity goes from 0 to 1 for the overlay
+                        inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, -Dimensions.get('window').width / 10, 0, Dimensions.get('window').width / 10, Dimensions.get('window').width / 2]}
                     >
                     </Swiper>
                 </View>
