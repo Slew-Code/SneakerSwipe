@@ -19,18 +19,33 @@ export default function Home() {
     const [activeJobType, setActiveJobType] = useState("Full-time");
     const jobTypes = ["Nike", "Adidas", "New Balance"];
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [swiping, setSwiping] = useState(true);
+
     /*
     const { data, isLoading, error } = useFetch(
         'getSneakers', {
             limit: 10,
         }
-    )*/
+    )
 
     const { data, isLoading, error } = useFetch("search", {
         query: 'React developer',
         num_pages: 1,
     });
-    // /console.log(data);
+    // /console.log(data);*/
+
+    const delaySwipe = () => {
+        setTimeout(() => {
+            setSwiping(true); // Enable swiping after a delay
+        }, 250); // Adjust the delay time (in milliseconds) as needed
+    };
+
+    const onSwiped = (index) => {
+        setCurrentIndex(index + 1);
+        setSwiping(false); // Disable swiping after a swipe
+        delaySwipe(); // Introduce delay between swipes
+    };
 
     const handleClick = () => {
         console.log("clicked");
@@ -81,8 +96,8 @@ export default function Home() {
                 <View style={styles.cardWrapper}>
                     
                     <Swiper
-                        //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
-                        cards={data}
+                        cards={['0', '1', '2', '3', '4', '5', '6', '7']}
+                        //cards={data} 
                         renderCard={(card) => {
                             if (!card) {
                                 //return null; // Return null or a placeholder if sneaker data is not available
@@ -95,18 +110,24 @@ export default function Home() {
                             
                             return (
                                 <View style={styles.card}>
-                                    <Text style={styles.text}>{card.job_title}</Text>
+                                    <Text style={styles.text}>{card}</Text>
                                 </View>
                             )
+
                         }}
                         onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
                         onSwipedRight={(cardIndex) => { console.log(cardIndex + " Swiped Right") }}
                         onSwipedAll={() => { console.log('onSwipedAll') }}
-                        // onSwiping={} change colour of card based on card coordinates
+                        //onSwiping={} change colour of card based on card coordinates
+                        
+                        cardIndex={currentIndex}
+                        //cardIndex={0}
+                        onSwiped={onSwiped}
+                        horizontalSwipe={swiping}
+
                         onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
                         verticalSwipe={false}
-                        cardIndex={0}
-                        stackSize={3}
+                        stackSize={5}
                         infinite={true}
                         cardVerticalMargin={0}
                         marginBottom={Dimensions.get('window').height * 0.50}
