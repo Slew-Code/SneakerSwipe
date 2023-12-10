@@ -58,12 +58,26 @@ const styles = StyleSheet.create({
     card: {
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: "#E8E8E8",
         backgroundColor: "white",
         height: "100%", 
         marginRight: 20,
         marginLeft: -20,
         justifyContent: "center",
+    },
+    image: {
+        width: 375,
+        height: 375,
+        marginLeft: -10,
+        height: "50%",
+    },
+    title: {
+        textAlign: "center",
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    description: {
+        fontSize: 14,
+        marginLeft: 10,
     },
     text: {
         textAlign: "center",

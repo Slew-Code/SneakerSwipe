@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Swiper from 'react-native-deck-swiper'
 
@@ -21,6 +21,30 @@ export default function Home() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [swiping, setSwiping] = useState(true);
+
+    const [data, setData] = useState([]);
+    
+    // Mock data for the swiper
+    useEffect(() => {
+        // Mock data with image URLs and text details for testing
+        const mockData = [
+            {
+                id: 1,
+                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
+                title: 'Card Title 1',
+                description: 'Description for Card 1',
+            },
+            {
+                id: 2,
+                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
+                title: 'Card Title 2',
+                description: 'Description for Card 2',
+            },
+            // Add more mock data as needed...
+        ];
+        setData(mockData);
+    }, []);
+
 
     /*
     const { data, isLoading, error } = useFetch(
@@ -96,8 +120,8 @@ export default function Home() {
                 <View style={styles.cardWrapper}>
                     
                     <Swiper
-                        cards={['0', '1', '2', '3', '4', '5', '6', '7']}
-                        //cards={data} 
+                        //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
+                        cards={data} 
                         renderCard={(card) => {
                             if (!card) {
                                 //return null; // Return null or a placeholder if sneaker data is not available
@@ -110,11 +134,14 @@ export default function Home() {
                             
                             return (
                                 <View style={styles.card}>
-                                    <Text style={styles.text}>{card}</Text>
+                                    <Text style={styles.text}>{card.title}</Text>
+                                    <Image source={{ uri: card.image }} style={styles.image}/>
+                                    <Text style={styles.description}>{card.description}</Text>
                                 </View>
                             )
 
                         }}
+                        //keyExtractor={(item) => item.job_id}
                         onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
                         onSwipedRight={(cardIndex) => { console.log(cardIndex + " Swiped Right") }}
                         onSwipedAll={() => { console.log('onSwipedAll') }}
@@ -128,7 +155,7 @@ export default function Home() {
                         onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
                         verticalSwipe={false}
                         stackSize={5}
-                        infinite={true}
+                        //infinite={true}
                         cardVerticalMargin={0}
                         marginBottom={Dimensions.get('window').height * 0.50}
                         overlayLabels={{
