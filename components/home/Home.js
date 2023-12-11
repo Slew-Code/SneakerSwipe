@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 
 import Swiper from 'react-native-deck-swiper'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from "./Home.style";
 import { SIZES } from "../../constants/theme";
@@ -23,6 +24,7 @@ export default function Home() {
     const [swiping, setSwiping] = useState(true);
 
     const [data, setData] = useState([]);
+    const [savedShoes, setSavedShoes] = useState([]);
     
     // Mock data for the swiper
     useEffect(() => {
@@ -45,7 +47,6 @@ export default function Home() {
         setData(mockData);
     }, []);
 
-
     /*
     const { data, isLoading, error } = useFetch(
         'getSneakers', {
@@ -65,11 +66,31 @@ export default function Home() {
         }, 250); // Adjust the delay time (in milliseconds) as needed
     };
 
-    const onSwiped = (index) => {
-        setCurrentIndex(index + 1);
+    const onSwiped = () => {
+        //setCurrentIndex(index + 1);
         setSwiping(false); // Disable swiping after a swipe
         delaySwipe(); // Introduce delay between swipes
     };
+
+    const onSwipedRight = async (cardIndex) => {    
+        console.log(cardIndex + " Swiped Right")
+
+        try {
+            // Get the current saved shoes or initialize an empty array
+            const savedShoesString = await AsyncStorage.getItem('savedShoes');
+            const savedShoesArray = savedShoesString ? JSON.parse(savedShoesString) : [];
+
+            // Save the ID of the swiped right shoe
+            const shoeId = data[cardIndex].id;
+            if (!savedShoesArray.includes(shoeId)) {
+                savedShoesArray.push(shoeId);
+                await AsyncStorage.setItem('savedShoes', JSON.stringify(savedShoesArray));
+                setSavedShoes(savedShoesArray);
+            }
+        } catch (error) {
+            console.error('Error saving shoe:', error);
+        }
+    }
 
     const handleClick = () => {
         console.log("clicked");
@@ -143,7 +164,7 @@ export default function Home() {
                         }}
                         //keyExtractor={(item) => item.job_id}
                         onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
-                        onSwipedRight={(cardIndex) => { console.log(cardIndex + " Swiped Right") }}
+                        onSwipedRight={(cardIndex) => onSwipedRight(cardIndex)}
                         onSwipedAll={() => { console.log('onSwipedAll') }}
                         //onSwiping={} change colour of card based on card coordinates
                         
