@@ -87,9 +87,14 @@ export default function Home() {
                 await AsyncStorage.setItem('savedShoes', JSON.stringify(savedShoesArray));
                 setSavedShoes(savedShoesArray);
             }
+            
+            //await AsyncStorage.setItem('savedShoes', JSON.stringify(cardIndex));
+
         } catch (error) {
             console.error('Error saving shoe:', error);
         }
+
+        console.log('Saved Shoes:', await AsyncStorage.getItem('savedShoes'));
     }
 
     const handleClick = () => {
