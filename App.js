@@ -3,16 +3,9 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-import  Home  from './components/home/Home'
+import Home from './components/home/Home';
+import Saved from './components/saved/Saved';
 import { useFonts } from "expo-font";
-
-function Saved() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Saved Sneakers will appear here!</Text>
-    </View>
-  );
-}
 
 function Profile() {
   return (
