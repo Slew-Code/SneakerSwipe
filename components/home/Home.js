@@ -79,6 +79,7 @@ export default function Home() {
             // Get the current saved shoes or initialize an empty array
             const savedShoesString = await AsyncStorage.getItem('savedShoes');
             const savedShoesArray = savedShoesString ? JSON.parse(savedShoesString) : [];
+            //const savedShoesArray = [];
 
             // Save the ID of the swiped right shoe
             const shoeId = data[cardIndex].id;

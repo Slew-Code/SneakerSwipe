@@ -1,10 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Saved() {
+    const [savedShoes, setSavedShoes] = useState([]);
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+        if (isFocused) {
+            retrieveSavedShoes();
+        }
+    }, [isFocused]);
+
+    const retrieveSavedShoes = async () => {
+        try {
+            const savedShoesString = await AsyncStorage.getItem('savedShoes');
+            if (savedShoesString) {
+                const savedShoesArray = JSON.parse(savedShoesString);
+                setSavedShoes(savedShoesArray);
+            }
+        } catch (error) {
+            console.error('Error retrieving saved shoes:', error);
+        }
+    };
+
+    return (
+        <View>
+            <Text>Saved Shoes:</Text>
+            {savedShoes.map((shoeId, index) => (
+                <Text key={index}>{shoeId}</Text>
+            ))}
+        </View>
+    );
+    
+    
+    /*
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Saved Sneakers will appear here!</Text>
         </View>
-    )
+    )*/
 }
