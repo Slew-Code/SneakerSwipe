@@ -5,15 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import Home from './components/home/Home';
 import Saved from './components/saved/Saved';
+import Settings from './components/settings/Settings';
 import { useFonts } from "expo-font";
-
-function Profile() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile settings here??</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +43,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={Settings}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
