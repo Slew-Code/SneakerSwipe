@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 
@@ -20,7 +20,7 @@ export default function Home() {
     const [activeJobType, setActiveJobType] = useState("Full-time");
     const jobTypes = ["Nike", "Adidas", "New Balance"];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    //const [currentIndex, setCurrentIndex] = useState(0);
     const [swiping, setSwiping] = useState(true);
 
     const [data, setData] = useState([]);
@@ -102,6 +102,18 @@ export default function Home() {
         console.log("clicked");
     }
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(null);
+
+    const handleCardTap = (cardIndex) => {
+        setSelectedCard(cardIndex)
+        setIsModalVisible(true);
+    };
+
+    const closeModal = () => {
+        setIsModalVisible(false);
+    };
+
     return (
         <View>
             <Text style={styles.header}>Swipe on Sneakers here!</Text>
@@ -166,7 +178,6 @@ export default function Home() {
                                     <Text style={styles.description}>{card.description}</Text>
                                 </View>
                             )
-
                         }}
                         //keyExtractor={(item) => item.job_id}
                         onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
@@ -174,12 +185,14 @@ export default function Home() {
                         onSwipedAll={() => { console.log('onSwipedAll') }}
                         //onSwiping={} change colour of card based on card coordinates
                         
-                        cardIndex={currentIndex}
-                        //cardIndex={0}
+                        //cardIndex={currentIndex}
+                        cardIndex={0}
                         onSwiped={onSwiped}
                         horizontalSwipe={swiping}
 
-                        onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
+                        //onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
+                        onTapCard={(cardIndex) => handleCardTap(cardIndex)}
+
                         verticalSwipe={false}
                         stackSize={5}
                         //infinite={true}
@@ -229,8 +242,42 @@ export default function Home() {
                         inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, -Dimensions.get('window').width / 10, 0, Dimensions.get('window').width / 10, Dimensions.get('window').width / 2]}
                     >
                     </Swiper>
+
+                    {/* Modal */}
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={isModalVisible}
+                        onRequestClose={closeModal}
+                    >
+                        <View style={styles1.modalContainer}>
+                            <View style={styles1.modalContent}>
+                                <Text>Card Details:</Text>
+                                <Text>{selectedCard}</Text>
+                                <TouchableOpacity onPress={closeModal}>
+                                    <Text>Close Modal</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+
                 </View>
             </View>
         </View>
     );
 }
+
+const styles1 = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+});

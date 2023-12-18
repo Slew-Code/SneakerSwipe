@@ -26,19 +26,37 @@ export default function Saved() {
     };
 
     return (
-        <View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Saved Shoes:</Text>
             {savedShoes.map((shoeId, index) => (
                 <Text key={index}>{shoeId}</Text>
             ))}
-        </View>
+
+        </View>        
     );
-    
-    
-    /*
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Saved Sneakers will appear here!</Text>
-        </View>
-    )*/
 }
+
+/*
+    <View style={styles.cardsContainer}>
+                {isLoading ? (
+                    <ActivityIndicator size='large' color={COLORS.primary} />
+                ) : error ? (
+                    <Text>Something went wrong</Text>
+                ) : (
+                    <FlatList
+                        data={data}
+                        renderItem={({ item }) => (
+                            
+                            <PopularJobCard
+                                item={item}
+                                selectedJob={selectedJob}
+                                handleCardPress={handleCardPress}
+                            />
+                        )}   
+                        keyExtractor={(item) => item.job_id}
+                        contentContainerStyle={{ columnGap: SIZES.medium }}
+                        horizontal
+                    />
+                )}
+            </View>
+*/
