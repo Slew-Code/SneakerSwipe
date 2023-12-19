@@ -254,6 +254,7 @@ export default function Home() {
                             <View style={styles1.modalContent}>
                                 <Text>Card Details:</Text>
                                 <Text>{selectedCard}</Text>
+                                <Text>{data[selectedCard].title}</Text>
                                 <TouchableOpacity onPress={closeModal}>
                                     <Text>Close Modal</Text>
                                 </TouchableOpacity>
@@ -275,6 +276,8 @@ const styles1 = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
     },
     modalContent: {
+        width: "90%",
+        height: "50%",
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 10,
