@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Swiper from 'react-native-deck-swiper'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -115,156 +116,161 @@ export default function Home() {
     };
 
     return (
-        <View>
-            <Text style={styles.header}>Swipe on Sneakers here!</Text>
+        <LinearGradient
+            style={styles.container}
+            colors={['white', '#dbdbdb']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+        >       
+            <View>
+                <View style={styles.searchContainer}>
+                    <View style={styles.searchWrapper}>
+                        <TextInput
+                            style={styles.searchInput}
+                            value={searchQuery}
+                            onChangeText={(text) => setSearchQuery(text)}
+                            placeholder='What are you looking for?'
+                        />
+                    </View>
 
-            <View style={styles.searchContainer}>
-                <View style={styles.searchWrapper}>
-                    <TextInput
-                        style={styles.searchInput}
-                        value={searchQuery}
-                        onChangeText={(text) => setSearchQuery(text)}
-                        placeholder='What are you looking for?'
+                    <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
+                        <Ionicons name="search" size={25} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.tabsContainer}>
+                    <FlatList
+                        data={jobTypes}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity
+                                style={styles.tab(activeJobType, item)}
+                                onPress={() => {
+                                    setActiveJobType(item);
+                                    //router.push(`/search/${item}`);
+                                    console.log("search tab pressed");
+                                }}
+                            >
+                                <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+                            </TouchableOpacity>
+                        )}
+                        keyExtractor={(item) => item}
+                        contentContainerStyle={{ columnGap: SIZES.small }}
+                        horizontal
+                        centerContent
                     />
                 </View>
 
-                <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
-                    <Ionicons name="search" size={25} />
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.tabsContainer}>
-                <FlatList
-                    data={jobTypes}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity
-                            style={styles.tab(activeJobType, item)}
-                            onPress={() => {
-                                setActiveJobType(item);
-                                //router.push(`/search/${item}`);
-                                console.log("search tab pressed");
-                            }}
-                        >
-                            <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
-                        </TouchableOpacity>
-                    )}
-                    keyExtractor={(item) => item}
-                    contentContainerStyle={{ columnGap: SIZES.small }}
-                    horizontal
-                    centerContent
-                />
-            </View>
-
-            <View style={styles.cardContainer}>
-                <View style={styles.cardWrapper}>
-                    
-                    <Swiper
-                        //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
-                        cards={data} 
-                        renderCard={(card) => {
-                            if (!card) {
-                                //return null; // Return null or a placeholder if sneaker data is not available
+                <View style={styles.cardContainer}>
+                    <View style={styles.cardWrapper}>
+                        
+                        <Swiper
+                            //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
+                            cards={data} 
+                            renderCard={(card) => {
+                                if (!card) {
+                                    //return null; // Return null or a placeholder if sneaker data is not available
+                                    return (
+                                        <View style={styles.card}>
+                                            <Text style={styles.text}>Loading...</Text>
+                                        </View>
+                                    );
+                                }
+                                
                                 return (
                                     <View style={styles.card}>
-                                        <Text style={styles.text}>Loading...</Text>
+                                        <Text style={styles.text}>{card.title}</Text>
+                                        <Image source={{ uri: card.image }} style={styles.image}/>
+                                        <Text style={styles.description}>{card.description}</Text>
                                     </View>
-                                );
-                            }
+                                )
+                            }}
+                            //keyExtractor={(item) => item.job_id}
+                            onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
+                            onSwipedRight={(cardIndex) => onSwipedRight(cardIndex)}
+                            onSwipedAll={() => { console.log('onSwipedAll') }}
+                            //onSwiping={} change colour of card based on card coordinates
                             
-                            return (
-                                <View style={styles.card}>
-                                    <Text style={styles.text}>{card.title}</Text>
-                                    <Image source={{ uri: card.image }} style={styles.image}/>
-                                    <Text style={styles.description}>{card.description}</Text>
+                            //cardIndex={currentIndex}
+                            cardIndex={0}
+                            onSwiped={onSwiped}
+                            horizontalSwipe={swiping}
+
+                            //onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
+                            onTapCard={(cardIndex) => handleCardTap(cardIndex)}
+
+                            verticalSwipe={false}
+                            stackSize={5}
+                            //infinite={true}
+                            cardVerticalMargin={0}
+                            marginBottom={Dimensions.get('window').height * 0.50}
+                            overlayLabels={{
+                                left: {
+                                    title: 'Nope',
+                                    style: {
+                                        label: {
+                                            backgroundColor: 'red',
+                                            borderColor: 'black',
+                                            color: 'white',
+                                            borderWidth: 1
+                                        },
+                                        wrapper: {
+                                            flexDirection: 'column',
+                                            alignItems: 'flex-end',
+                                            justifyContent: 'flex-start',
+                                            marginTop: 30,
+                                            marginLeft: -40
+                                        }
+                                    }
+                                },
+                                right: {
+                                    title: 'Dope',
+                                    style: {
+                                        label: {
+                                            backgroundColor: 'green',
+                                            borderColor: 'black',
+                                            color: 'white',
+                                            borderWidth: 1
+                                        },
+                                        wrapper: {
+                                            flexDirection: 'column',
+                                            alignItems: 'flex-start',
+                                            justifyContent: 'flex-start',
+                                            marginTop: 30,
+                                            marginLeft: 0
+                                        }
+                                    }
+                                }
+                            }}
+                            animateOverlayLabelsOpacity // labels fade in when you begin to swipe
+                            overlayOpacityHorizontalThreshold={Dimensions.get('window').width / 10} // the point at which the overlay can appear 
+                            // The range from which the opacity goes from 0 to 1 for the overlay
+                            inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, -Dimensions.get('window').width / 10, 0, Dimensions.get('window').width / 10, Dimensions.get('window').width / 2]}
+                        >
+                        </Swiper>
+
+                        {/* Modal */}
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={isModalVisible}
+                            onRequestClose={closeModal}
+                        >
+                            <View style={styles1.modalContainer}>
+                                <View style={styles1.modalContent}>
+                                    <Text>Card Details:</Text>
+                                    <Text>{selectedCard}</Text>
+                                    {/*<Text>{data[selectedCard].title}</Text>*/}
+                                    <TouchableOpacity onPress={closeModal}>
+                                        <Text>Close Modal</Text>
+                                    </TouchableOpacity>
                                 </View>
-                            )
-                        }}
-                        //keyExtractor={(item) => item.job_id}
-                        onSwipedLeft={(cardIndex) => { console.log(cardIndex + " Swiped Left") }}
-                        onSwipedRight={(cardIndex) => onSwipedRight(cardIndex)}
-                        onSwipedAll={() => { console.log('onSwipedAll') }}
-                        //onSwiping={} change colour of card based on card coordinates
-                        
-                        //cardIndex={currentIndex}
-                        cardIndex={0}
-                        onSwiped={onSwiped}
-                        horizontalSwipe={swiping}
-
-                        //onTapCard={(cardIndex) => { console.log(cardIndex + " Pressed") }} // Take to shoe info on tap 
-                        onTapCard={(cardIndex) => handleCardTap(cardIndex)}
-
-                        verticalSwipe={false}
-                        stackSize={5}
-                        //infinite={true}
-                        cardVerticalMargin={0}
-                        marginBottom={Dimensions.get('window').height * 0.50}
-                        overlayLabels={{
-                            left: {
-                                title: 'Nope',
-                                style: {
-                                    label: {
-                                        backgroundColor: 'red',
-                                        borderColor: 'black',
-                                        color: 'white',
-                                        borderWidth: 1
-                                    },
-                                    wrapper: {
-                                        flexDirection: 'column',
-                                        alignItems: 'flex-end',
-                                        justifyContent: 'flex-start',
-                                        marginTop: 30,
-                                        marginLeft: -40
-                                    }
-                                }
-                            },
-                            right: {
-                                title: 'Dope',
-                                style: {
-                                    label: {
-                                        backgroundColor: 'green',
-                                        borderColor: 'black',
-                                        color: 'white',
-                                        borderWidth: 1
-                                    },
-                                    wrapper: {
-                                        flexDirection: 'column',
-                                        alignItems: 'flex-start',
-                                        justifyContent: 'flex-start',
-                                        marginTop: 30,
-                                        marginLeft: 0
-                                    }
-                                }
-                            }
-                        }}
-                        animateOverlayLabelsOpacity // labels fade in when you begin to swipe
-                        overlayOpacityHorizontalThreshold={Dimensions.get('window').width / 10} // the point at which the overlay can appear 
-                        // The range from which the opacity goes from 0 to 1 for the overlay
-                        inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, -Dimensions.get('window').width / 10, 0, Dimensions.get('window').width / 10, Dimensions.get('window').width / 2]}
-                    >
-                    </Swiper>
-
-                    {/* Modal */}
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={isModalVisible}
-                        onRequestClose={closeModal}
-                    >
-                        <View style={styles1.modalContainer}>
-                            <View style={styles1.modalContent}>
-                                <Text>Card Details:</Text>
-                                <Text>{selectedCard}</Text>
-                                <Text>{data[selectedCard].title}</Text>
-                                <TouchableOpacity onPress={closeModal}>
-                                    <Text>Close Modal</Text>
-                                </TouchableOpacity>
                             </View>
-                        </View>
-                    </Modal>
+                        </Modal>
 
+                    </View>
                 </View>
             </View>
-        </View>
+        </LinearGradient>
     );
 }
 

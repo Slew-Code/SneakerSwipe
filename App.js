@@ -16,7 +16,10 @@ function MyTabs() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
-      }}
+        tabBarStyle: {
+          borderBlockColor: 'white',
+          height: '10%',
+      },}}
     >
       <Tab.Screen
         name="Home"
@@ -26,7 +29,12 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="search" color={color} size={size} />
           ),
-          headerTitle: "SneakerSwipe",
+          headerTitle: "MatchMyKicks",
+          headerStyle: {
+            backgroundColor:"white",
+            borderWidth:0,
+          },
+          headerShadowVisible: false,
         }}  
       />
       <Tab.Screen
@@ -38,7 +46,8 @@ function MyTabs() {
             <MaterialCommunityIcons name="format-list-bulleted" color={color} size={size} />
           ),
           tabBarBadge: 3, // figure out how to change this to the total number of saved sneakers within here 
-          headerTitle: "SneakerSwipe",
+          headerTitle: "MatchMyKicks",
+
         }}
       />
       <Tab.Screen
@@ -49,7 +58,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
-          headerTitle: "SneakerSwipe",
+          headerTitle: "MatchMyKicks",
         }}
       />
     </Tab.Navigator>

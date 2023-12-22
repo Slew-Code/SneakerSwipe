@@ -5,6 +5,7 @@ import { COLORS, FONT, SIZES } from "../../constants/theme";
 const styles = StyleSheet.create({
     container: {
         width: "100%",
+        height: "100%",
     },
     header: {
         textAlign: "center",
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     cardContainer: {
-        backgroundColor: "red", 
+        //backgroundColor: "red", 
+        backgroundColor: "transparent", 
         width: "100%", 
         height: "70%", 
         marginTop: 30, 
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     },
     card: {
         borderRadius: 4,
-        borderWidth: 2,
+        borderWidth: 1,
         backgroundColor: "white",
         height: "100%", 
         marginRight: 20,
