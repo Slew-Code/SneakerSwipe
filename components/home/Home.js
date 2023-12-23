@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -36,14 +36,28 @@ export default function Home() {
                 image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
                 title: 'Card Title 1',
                 description: 'Description for Card 1',
+                estimatedMarketValue: 185,
+                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
             },
             {
                 id: 2,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
-                title: 'Card Title 2',
+                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
+                title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
                 description: 'Description for Card 2',
+                estimatedMarketValue: 1185,
+                link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
+
             },
-            // Add more mock data as needed...
+            {
+                id: 3,
+                image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
+                title: 'adidas Gazelle Blue',
+                description: 'Description for Card 3',
+                estimatedMarketValue: 80,
+                link: "https://stockx.com/adidas-gazelle-blue"
+
+            },
+            
         ];
         setData(mockData);
     }, []);
@@ -102,6 +116,12 @@ export default function Home() {
     const handleClick = () => {
         console.log("clicked");
     }
+
+    const handleBuyPress = (link) => {
+        // Replace 'https://example.com' with the actual external URL you want to open
+        Linking.openURL(link)
+            .catch((err) => console.error('An error occurred', err));
+    };
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedCard, setSelectedCard] = useState(null);
@@ -178,9 +198,12 @@ export default function Home() {
                                 
                                 return (
                                     <View style={styles.card}>
-                                        <Text style={styles.text}>{card.title}</Text>
-                                        <Image source={{ uri: card.image }} style={styles.image}/>
-                                        <Text style={styles.description}>{card.description}</Text>
+                                        <Image source={{ uri: card.image }} style={styles.image} />
+                                        <Text style={styles.cardTitle}>{card.title}</Text>
+                                        <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
+                                        <TouchableOpacity onPress={() => handleBuyPress(card.link)} style={styles.buyButton}>
+                                            <Text style={styles.buyButtonText}>Buy Now</Text>
+                                        </TouchableOpacity>
                                     </View>
                                 )
                             }}

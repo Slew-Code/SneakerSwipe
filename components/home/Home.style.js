@@ -58,32 +58,45 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     card: {
-        borderRadius: 4,
-        borderWidth: 1,
+        borderRadius: 10,
+        borderWidth: 2,
         backgroundColor: "white",
         height: "100%", 
         marginRight: 20,
         marginLeft: -20,
-        justifyContent: "center",
+        justifyContent: "flex-start", // Align items from the start (top of the card)
     },
     image: {
         width: 375,
-        height: 375,
+        height: 100,
         marginLeft: -10,
+        marginTop: 20,
         height: "50%",
     },
-    title: {
+    cardDescription: {
         textAlign: "center",
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    description: {
         fontSize: 14,
         marginLeft: 10,
+        fontFamily: FONT.medium,
     },
-    text: {
+    cardTitle: {
         textAlign: "center",
-        fontSize: 50,
+        fontSize: 24,
+        fontFamily: FONT.medium,
+        marginBottom: 15,
+    },
+    buyButton: {
+        width: "50%",
+        alignSelf: 'center', // Center horizontally in middle
+        alignItems: 'center', //align text within button in middle
+        backgroundColor: 'green',
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,      
+    },
+    buyButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
     },
     tabsContainer: {
         width: "100%",

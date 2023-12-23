@@ -19,7 +19,8 @@ function MyTabs() {
         tabBarStyle: {
           borderBlockColor: 'white',
           height: '10%',
-      },}}
+        },
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -34,7 +35,7 @@ function MyTabs() {
             backgroundColor:"white",
             borderWidth:0,
           },
-          headerShadowVisible: false,
+          headerShadowVisible: false, // Remove the line that seperates the header from the page
         }}  
       />
       <Tab.Screen
