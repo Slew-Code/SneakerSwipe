@@ -32,7 +32,7 @@ export default function Home() {
         // Mock data with image URLs and text details for testing
         const mockData = [
             {
-                id: 1,
+                id: 1454,
                 image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
                 title: 'Card Title 1',
                 description: 'Description for Card 1',
@@ -40,7 +40,7 @@ export default function Home() {
                 link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
             },
             {
-                id: 2,
+                id: 2456,
                 image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
                 title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
                 description: 'Description for Card 2',
@@ -49,7 +49,7 @@ export default function Home() {
 
             },
             {
-                id: 3,
+                id: 3464,
                 image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
                 title: 'adidas Gazelle Blue',
                 description: 'Description for Card 3',
