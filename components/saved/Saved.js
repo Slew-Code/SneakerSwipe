@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
+import SavedShoeCard from './SavedShoeCard';
 
 export default function Saved() {
     const [savedShoes, setSavedShoes] = useState([]);
@@ -41,6 +42,15 @@ export default function Saved() {
                 description: 'Description for Card 1',
                 estimatedMarketValue: 185,
                 link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
+            },
+            {
+                id: 2456,
+                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
+                title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
+                description: 'Description for Card 2',
+                estimatedMarketValue: 1185,
+                link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
+
             },
             {
                 id: 3464,
@@ -87,8 +97,13 @@ export default function Saved() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Saved Shoes:</Text>
-            {savedShoes.map((shoeId, index) => (
-                <Text key={shoeId}>{sneakerData[index].title}</Text>
+            
+            {savedShoes?.map((shoeId, index) => (
+                <SavedShoeCard
+                    shoe={sneakerData[index]}
+                    key={shoeId}
+                    handleNavigate={() => console.log("Saved Shoe Pressed")}
+                />
             ))}
 
             <TouchableOpacity onPress={removeAllSavedShoes} style={{ marginTop: 20 }}>

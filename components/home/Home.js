@@ -33,7 +33,7 @@ export default function Home() {
         const mockData = [
             {
                 id: 1454,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
+                image: "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
                 title: 'Card Title 1',
                 description: 'Description for Card 1',
                 estimatedMarketValue: 185,
