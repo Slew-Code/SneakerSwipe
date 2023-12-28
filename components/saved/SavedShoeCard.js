@@ -5,26 +5,26 @@ import {checkImageURL} from "../../utils/utility";
 
 const SavedShoeCard = ({ shoe, handleNavigate }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <TouchableOpacity style={styles.logoContainer}>
-        <Image
-          source={{
-            uri: checkImageURL(shoe.image)
-              ? shoe.image
-              : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
-          }}
-          resizeMode='contain'
-          style={styles.logoImage}
-        />
+      <TouchableOpacity style={styles.container} onPress={handleNavigate}>
+        <TouchableOpacity style={styles.logoContainer} onPress={handleNavigate}>
+          <Image
+            source={{
+              uri: checkImageURL(shoe.image)
+                ? shoe.image
+                : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
+            }}
+            resizeMode='contain'
+            style={styles.logoImage}
+          />
+        </TouchableOpacity>
+
+        <View style={styles.textContainer}>
+          <Text style={styles.shoeName}>
+            {shoe?.title}
+          </Text>
+        </View>
+        
       </TouchableOpacity>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.jobName} numberOfLines={1}>
-          {shoe?.title}
-        </Text>
-
-      </View>
-    </TouchableOpacity>
   );
 };
 

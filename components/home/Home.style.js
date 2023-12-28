@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     cardWrapper: {   
-        backgroundColor: '#4FD0E9',
+        //backgroundColor: '#4FD0E9',
         borderRadius: SIZES.small,
         width: "100%",
         height: "100%",

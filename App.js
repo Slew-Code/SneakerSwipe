@@ -15,7 +15,7 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: '#e91e63',
+        tabBarActiveTintColor: 'red',
         tabBarStyle: {
           borderBlockColor: 'white',
           height: '10%',
@@ -48,7 +48,7 @@ function MyTabs() {
           ),
           tabBarBadge: 3, // figure out how to change this to the total number of saved sneakers within here 
           headerTitle: "MatchMyKicks",
-
+          headerShadowVisible: false,
         }}
       />
       <Tab.Screen
@@ -60,6 +60,7 @@ function MyTabs() {
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
           headerTitle: "MatchMyKicks",
+          headerShadowVisible: false,
         }}
       />
     </Tab.Navigator>

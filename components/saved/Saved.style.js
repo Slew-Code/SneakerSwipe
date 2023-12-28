@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../constants/theme";
+import { COLORS, FONT, SHADOWS, SIZES } from "../../constants/theme";
 
 const styles = StyleSheet.create({
     container: {
@@ -22,7 +22,13 @@ const styles = StyleSheet.create({
         color: COLORS.gray,
     },
     cardsContainer: {
-        marginTop: SIZES.medium,
+        //flex: 1,
+        marginTop: SIZES.small,
+        padding: SIZES.xSmall, 
+        borderRadius: SIZES.small,
+        //backgroundColor: "#FFF",
+        ...SHADOWS.small,
+        shadowColor: COLORS.gray1,
     },
 });
 

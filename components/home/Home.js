@@ -34,7 +34,7 @@ export default function Home() {
             {
                 id: 1454,
                 image: "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
-                title: 'Card Title 1',
+                title: 'Jordan 1 Retro High',
                 description: 'Description for Card 1',
                 estimatedMarketValue: 185,
                 link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
@@ -51,12 +51,13 @@ export default function Home() {
             {
                 id: 3464,
                 image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
-                title: 'adidas Gazelle Blue',
+                title: 'Adidas Gazelle Blue',
                 description: 'Description for Card 3',
                 estimatedMarketValue: 80,
                 link: "https://stockx.com/adidas-gazelle-blue"
 
             },
+
             
         ];
         setData(mockData);

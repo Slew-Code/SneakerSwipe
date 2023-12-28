@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF",
         ...SHADOWS.medium,
         shadowColor: COLORS.white,
+        marginBottom: 10,
     },
     logoContainer: {
         width: 100,
@@ -30,12 +31,11 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: SIZES.medium,
     },
-    jobName: {
+    shoeName: {
         fontSize: SIZES.medium,
         fontFamily: "DMBold",
-        color: COLORS.primary,
     },
-    jobType: {
+    shoeType: {
         fontSize: SIZES.small + 2,
         fontFamily: "DMRegular",
         color: COLORS.gray,
