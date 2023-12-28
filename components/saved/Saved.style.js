@@ -26,9 +26,7 @@ const styles = StyleSheet.create({
         marginTop: SIZES.small,
         padding: SIZES.xSmall, 
         borderRadius: SIZES.small,
-        //backgroundColor: "#FFF",
-        ...SHADOWS.small,
-        shadowColor: COLORS.gray1,
+
     },
 });
 

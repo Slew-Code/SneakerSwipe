@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         borderRadius: SIZES.small,
         backgroundColor: "#FFF",
         ...SHADOWS.medium,
-        shadowColor: COLORS.white,
+        shadowColor: COLORS.black,
         marginBottom: 10,
     },
     logoContainer: {
