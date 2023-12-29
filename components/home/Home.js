@@ -119,7 +119,6 @@ export default function Home() {
     }
 
     const handleBuyPress = (link) => {
-        // Replace 'https://example.com' with the actual external URL you want to open
         Linking.openURL(link)
             .catch((err) => console.error('An error occurred', err));
     };
@@ -195,7 +194,7 @@ export default function Home() {
                                             <Text style={styles.text}>Loading...</Text>
                                         </View>
                                     );
-                                }
+                                }  
                                 
                                 return (
                                     <View style={styles.card}>
@@ -281,9 +280,13 @@ export default function Home() {
                         >
                             <View style={styles1.modalContainer}>
                                 <View style={styles1.modalContent}>
-                                    <Text>Card Details:</Text>
-                                    <Text>{selectedCard}</Text>
-                                    {/*<Text>{data[selectedCard].title}</Text>*/}
+                                    {selectedCard !== null && (
+                                        <>
+                                            <Text>Title: {data[selectedCard].title}</Text>
+                                            <Text>Description: {data[selectedCard].description}</Text>
+                                            {/* Add more details from the data[selectedCard] as needed */}
+                                        </>
+                                    )}
                                     <TouchableOpacity onPress={closeModal}>
                                         <Text>Close Modal</Text>
                                     </TouchableOpacity>
