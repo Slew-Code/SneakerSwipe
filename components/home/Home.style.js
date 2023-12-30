@@ -105,6 +105,20 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
     },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    },
+    modalContent: {
+        width: "95%",
+        height: "75%",
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
     tabsContainer: {
         width: "100%",
         marginTop: SIZES.medium,

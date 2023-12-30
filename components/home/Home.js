@@ -332,8 +332,8 @@ export default function Home() {
                             visible={isModalVisible}
                             onRequestClose={closeModal}
                         >
-                            <View style={styles1.modalContainer}>
-                                <View style={styles1.modalContent}>
+                            <View style={styles.modalContainer}>
+                                <View style={styles.modalContent}>
                                     {selectedCard !== null && (
                                         <>
                                             <Text>Title: {data[selectedCard].title}</Text>
@@ -354,20 +354,3 @@ export default function Home() {
         </LinearGradient>
     );
 }
-
-const styles1 = StyleSheet.create({
-    modalContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-    },
-    modalContent: {
-        width: "95%",
-        height: "75%",
-        backgroundColor: 'white',
-        padding: 20,
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-});
