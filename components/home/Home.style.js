@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../constants/theme";
+import { COLORS, FONT, SIZES, SHADOWS } from "../../constants/theme";
 
 const styles = StyleSheet.create({
     container: {
@@ -59,12 +59,14 @@ const styles = StyleSheet.create({
     },
     card: {
         borderRadius: 10,
-        borderWidth: 2,
+        //borderWidth: 2,
         backgroundColor: "white",
         height: "100%", 
         marginRight: 20,
         marginLeft: -20,
         justifyContent: "flex-start", // Align items from the start (top of the card)
+        ...SHADOWS.medium,
+        shadowColor: COLORS.black,
     },
     image: {
         width: 375,
@@ -96,16 +98,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 5, // Add horizontal margin between buttons
         marginBottom: 10, // Add margin at the bottom
     },
-    buyButtonText: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center', // Center text horizontally within button
-        fontSize: 12,
-    },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 30,
+        marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
     },

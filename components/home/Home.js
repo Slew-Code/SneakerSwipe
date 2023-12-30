@@ -226,7 +226,9 @@ export default function Home() {
                                         <Image source={{ uri: card.image }} style={styles.image} />
                                         <Text style={styles.cardTitle}>{card.title}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
+                                        <Text style={styles.cardDescription}>Available Here:</Text>
                                         <View style={styles.buttonContainer}>
+
                                             {card.links.map((link, index) => {
                                                 let buttonText = '';
                                                 let buttonStyle = {};
