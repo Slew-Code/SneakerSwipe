@@ -86,17 +86,28 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     buyButton: {
-        width: "50%",
-        alignSelf: 'center', // Center horizontally in middle
-        alignItems: 'center', //align text within button in middle
+        flex: 1,
+        alignSelf: 'stretch', // Stretch button to fill available space horizontally
+        justifyContent: 'center', // Center text vertically within the button
         backgroundColor: 'green',
-        padding: 10,
+        paddingVertical: 12, // Adjust vertical padding for height
+        paddingHorizontal: 10, // Adjust horizontal padding
         borderRadius: 5,
-        marginTop: 10,      
+        marginHorizontal: 5, // Add horizontal margin between buttons
+        marginBottom: 10, // Add margin at the bottom
     },
     buyButtonText: {
         color: 'white',
         fontWeight: 'bold',
+        textAlign: 'center', // Center text horizontally within button
+        fontSize: 12,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 30,
+        marginLeft: 10,
+        marginRight: 10,
     },
     tabsContainer: {
         width: "100%",

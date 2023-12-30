@@ -37,7 +37,12 @@ export default function Home() {
                 title: 'Jordan 1 Retro High',
                 description: 'Description for Card 1',
                 estimatedMarketValue: 185,
-                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
+                links: [
+                    "https://stockx.com/air-jordan-1-retro-high-bloodline",  
+                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
+                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
+                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
+                ]
             },
             {
                 id: 2456,
@@ -45,8 +50,13 @@ export default function Home() {
                 title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
                 description: 'Description for Card 2',
                 estimatedMarketValue: 1185,
-                link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
-
+                //link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
+                links: [
+                    "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky",
+                    "",  //no affiliate 
+                    "", //no affiliate
+                    "https://sale.stadiumgoods.com/nike-sb-dunk-low-ben-jerry-s-chunky-dunky-cu3244-100"
+                ]
             },
             {
                 id: 3464,
@@ -54,8 +64,13 @@ export default function Home() {
                 title: 'Adidas Gazelle Blue',
                 description: 'Description for Card 3',
                 estimatedMarketValue: 80,
-                link: "https://stockx.com/adidas-gazelle-blue"
-
+                //link: "https://stockx.com/adidas-gazelle-blue"
+                links: [
+                    "https://stockx.com/air-jordan-1-retro-high-bloodline",
+                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
+                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
+                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
+                ]
             },
 
             
@@ -135,6 +150,16 @@ export default function Home() {
         setIsModalVisible(false);
     };
 
+    const isLinkAvailable = (link) => link && link !== '';
+
+    const getButtonTextStyle = (linkAvailable) => ({
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        maxWidth: '100%',
+        fontSize: linkAvailable ? 12 : 8, // Adjust font size based on link availability
+    });
+
     return (
         <LinearGradient
             style={styles.container}
@@ -201,9 +226,36 @@ export default function Home() {
                                         <Image source={{ uri: card.image }} style={styles.image} />
                                         <Text style={styles.cardTitle}>{card.title}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
-                                        <TouchableOpacity onPress={() => handleBuyPress(card.link)} style={styles.buyButton}>
-                                            <Text style={styles.buyButtonText}>Buy Now</Text>
-                                        </TouchableOpacity>
+                                        <View style={styles.buttonContainer}>
+                                            {card.links.map((link, index) => {
+                                                let buttonText = '';
+                                                let buttonStyle = {};
+
+                                                if (isLinkAvailable(link)) {
+                                                    if (index === 0) { buttonText = 'StockX' } 
+                                                    else if (index === 1){ buttonText = 'GOAT' }
+                                                    else if (index === 2) { buttonText = 'Flight Club' }
+                                                    else if (index === 3) { buttonText = 'Stadium Goods' }
+                                                } 
+                                                else {
+                                                    buttonText = 'Unavailable';
+                                                    buttonStyle = { backgroundColor: '#CCCCCC', borderColor: '#CCCCCC'};
+                                                }  
+                                                   
+                                                return (
+                                                    <TouchableOpacity
+                                                        key={`link-${index}`}
+                                                        onPress={() => handleBuyPress(link)}
+                                                        style={[styles.buyButton, buttonStyle]}
+                                                        disabled={!isLinkAvailable(link)}
+                                                    >
+                                                        <Text style={getButtonTextStyle(isLinkAvailable(link))}>
+                                                            {buttonText}
+                                                        </Text>
+                                                    </TouchableOpacity>
+                                                );       
+                                            })}
+                                        </View>
                                     </View>
                                 )
                             }}
@@ -309,8 +361,8 @@ const styles1 = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
     },
     modalContent: {
-        width: "90%",
-        height: "50%",
+        width: "95%",
+        height: "75%",
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 10,
