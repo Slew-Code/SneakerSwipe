@@ -19,7 +19,7 @@ export default function Home() {
 
     //Set the default search tab 
     const [activeJobType, setActiveJobType] = useState("Full-time");
-    const jobTypes = ["Nike", "Adidas", "New Balance"];
+    const jobTypes = ["Nike", "Adidas", "New Balance", "Popular", "Rare", "New Release"];
 
     //const [currentIndex, setCurrentIndex] = useState(0);
     const [swiping, setSwiping] = useState(true);
@@ -186,6 +186,7 @@ export default function Home() {
                 <View style={styles.tabsContainer}>
                     <FlatList
                         data={jobTypes}
+                        numColumns={3} // Set the number of columns to 3 for two lines with three items each
                         renderItem={({ item }) => (
                             <TouchableOpacity
                                 style={styles.tab(activeJobType, item)}
@@ -199,9 +200,8 @@ export default function Home() {
                             </TouchableOpacity>
                         )}
                         keyExtractor={(item) => item}
-                        contentContainerStyle={{ columnGap: SIZES.small }}
-                        horizontal
-                        centerContent
+                        scrollEnabled={false}
+                        //centerContent
                     />
                 </View>
 
