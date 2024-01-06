@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet, Linking } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet, Linking, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -333,18 +333,22 @@ export default function Home() {
                             onRequestClose={closeModal}
                         >
                             <View style={styles.modalContainer}>
-                                <View style={styles.modalContent}>
-                                    {selectedCard !== null && (
-                                        <>
-                                            <Text>Title: {data[selectedCard].title}</Text>
-                                            <Text>Description: {data[selectedCard].description}</Text>
-                                            {/* Add more details from the data[selectedCard] as needed */}
-                                        </>
-                                    )}
-                                    <TouchableOpacity onPress={closeModal}>
-                                        <Text>Close Modal</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                
+                                    <View style={styles.modalContent}>
+                                    <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                                        {selectedCard !== null && data[selectedCard] && (
+                                            <>
+                                                <Text>Title: {data[selectedCard].title}</Text>
+                                                <Text>Description: {data[selectedCard].description}</Text>
+                                                {/* Add more details from the data[selectedCard] as needed */}
+                                            </>
+                                        )}
+                                        <TouchableOpacity onPress={closeModal}>
+                                            <Text>Close Modal</Text>
+                                        </TouchableOpacity>
+                                    </ScrollView>
+                                    </View>
+                                
                             </View>
                         </Modal>
 
