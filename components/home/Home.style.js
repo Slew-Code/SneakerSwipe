@@ -70,10 +70,9 @@ const styles = StyleSheet.create({
         shadowColor: COLORS.black,
     },
     image: {
-        width: 375,
-        height: 100,
-        marginLeft: -10,
-        marginTop: 20,
+        width: "100%",
+        //marginLeft: -10,
+        marginTop: -25,
         height: "50%",
     },
     cardDescription: {
@@ -116,7 +115,6 @@ const styles = StyleSheet.create({
         width: "90%",
         height: "75%",
         backgroundColor: 'white',
-        padding: 20,
         borderRadius: 10,
     },
     scrollViewContent: {

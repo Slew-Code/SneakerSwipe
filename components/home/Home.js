@@ -333,13 +333,14 @@ export default function Home() {
                             onRequestClose={closeModal}
                         >
                             <View style={styles.modalContainer}>
-                                
                                     <View style={styles.modalContent}>
                                     <ScrollView contentContainerStyle={styles.scrollViewContent}>
                                         {selectedCard !== null && data[selectedCard] && (
                                             <>
+                                                <Image source={{ uri: data[selectedCard].image }} style={styles.image}/>
                                                 <Text>Title: {data[selectedCard].title}</Text>
                                                 <Text>Description: {data[selectedCard].description}</Text>
+
                                                 {/* Add more details from the data[selectedCard] as needed */}
                                             </>
                                         )}
@@ -347,8 +348,7 @@ export default function Home() {
                                             <Text>Close Modal</Text>
                                         </TouchableOpacity>
                                     </ScrollView>
-                                    </View>
-                                
+                                    </View>                               
                             </View>
                         </Modal>
 
