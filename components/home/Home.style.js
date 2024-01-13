@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         shadowColor: COLORS.black,
     },
     image: {
-        width: "100%",
+        width: 375,
         //marginLeft: -10,
         marginTop: -25,
         height: "50%",

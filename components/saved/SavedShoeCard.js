@@ -1,12 +1,23 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image, Modal, StyleSheet, ScrollView } from "react-native";
 
 import styles from "./SavedShoeCard.style";
 import {checkImageURL} from "../../utils/utility";
 
 const SavedShoeCard = ({ shoe, handleNavigate }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
+   
   return (
-      <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-        <TouchableOpacity style={styles.logoContainer} onPress={handleNavigate}>
+      <TouchableOpacity style={styles.container} onPress={openModal}>
+        <TouchableOpacity style={styles.logoContainer} onPress={openModal}>
           <Image
             source={{
               uri: checkImageURL(shoe.image)
@@ -23,7 +34,30 @@ const SavedShoeCard = ({ shoe, handleNavigate }) => {
             {shoe?.title}
           </Text>
         </View>
-        
+
+        {/* Modal */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisible}
+          onRequestClose={closeModal}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <ScrollView contentContainerStyle={styles.scrollViewContent}> 
+                
+                <Image source={{ uri: shoe?.image }} style={styles.image} />
+                <Text>Title: {shoe?.title}</Text>
+                <Text>Description: {shoe?.description}</Text> 
+              
+                <TouchableOpacity onPress={closeModal}>
+                  <Text>Close Modal</Text>
+                </TouchableOpacity>
+              
+              </ScrollView>
+            </View>
+          </View>
+        </Modal>
       </TouchableOpacity>
   );
 };
