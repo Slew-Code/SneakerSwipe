@@ -49,7 +49,7 @@ const SavedShoeCard = ({ shoe, handleNavigate }) => {
                 <Image source={{ uri: shoe?.image }} style={styles.image} />
                 <Text>Title: {shoe?.title}</Text>
                 <Text>Description: {shoe?.description}</Text> 
-              
+
                 <TouchableOpacity onPress={closeModal}>
                   <Text>Close Modal</Text>
                 </TouchableOpacity>

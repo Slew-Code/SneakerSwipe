@@ -73,6 +73,7 @@ export default function Saved() {
         }
     }, [isFocused]);
 
+    // POTENTIAL ERROR IF A SAVED SHOE CAN NO LONGER BE FOUND IN THE DATABASE
     const retrieveSavedShoes = async () => {
         try {
             const savedShoesString = await AsyncStorage.getItem('savedShoes');
@@ -82,6 +83,25 @@ export default function Saved() {
             }
         } catch (error) {
             console.error('Error retrieving saved shoes:', error);
+        }
+    };
+
+    const removeSavedShoe = async (shoeId) => {
+        try {
+            // Get the current saved shoes
+            const savedShoesString = await AsyncStorage.getItem('savedShoes');
+            let savedShoesArray = savedShoesString ? JSON.parse(savedShoesString) : [];
+
+            // Remove the shoe with the given ID
+            savedShoesArray = savedShoesArray.filter((id) => id !== shoeId);
+
+            // Update AsyncStorage and state
+            await AsyncStorage.setItem('savedShoes', JSON.stringify(savedShoesArray));
+            setSavedShoes(savedShoesArray);
+
+            Alert.alert('Shoe removed successfully');
+        } catch (error) {
+            console.error('Error removing saved shoe:', error);
         }
     };
 
@@ -109,6 +129,10 @@ export default function Saved() {
                 ))}
             </ScrollView>   
             
+            <TouchableOpacity onPress={() => removeSavedShoe(1454)}>
+                <Text>Remove Shoe</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity onPress={removeAllSavedShoes} style={{ marginBottom: 20 }}>
                 <Text style={{ color: 'red', textAlign: 'center' }}>Remove All Saved Shoes</Text>
             </TouchableOpacity>           

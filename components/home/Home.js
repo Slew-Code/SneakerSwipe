@@ -103,6 +103,8 @@ export default function Home() {
         delaySwipe(); // Introduce delay between swipes
     };
 
+
+    // POTENTIAL ERROR IF A SAVED SHOE CAN NO LONGER BE FOUND IN THE DATABASE
     const onSwipedRight = async (cardIndex) => {    
         console.log(cardIndex + " Swiped Right")
 
