@@ -29,11 +29,23 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         flex: 1,
+        flexDirection:"row",
         marginHorizontal: SIZES.medium,
+        alignItems:"center",
+        justifyContent: 'space-between', // Add this line to adjust spacing between text and delete button
+
     },
     shoeName: {
         fontSize: SIZES.medium,
         fontFamily: "DMBold",
+    },   
+    deleteBtn: {   
+        width: 50,
+        height: 50,
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.medium,
+        justifyContent: "center",
+        alignItems: "center",    
     },
     shoeType: {
         fontSize: SIZES.small + 2,

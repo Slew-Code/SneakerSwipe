@@ -3,8 +3,11 @@ import { View, Text, TouchableOpacity, Image, Modal, StyleSheet, ScrollView } fr
 
 import styles from "./SavedShoeCard.style";
 import {checkImageURL} from "../../utils/utility";
+import { MaterialCommunityIcons} from '@expo/vector-icons';
 
-const SavedShoeCard = ({ shoe, handleNavigate }) => {
+const SavedShoeCard = ({ shoe, handleNavigate, onDelete }) => {
+  
+  // Functions for Modal
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const openModal = () => {
@@ -14,6 +17,11 @@ const SavedShoeCard = ({ shoe, handleNavigate }) => {
   const closeModal = () => {
     setIsModalVisible(false);
   };
+
+  // Handle click for delete Icon
+  const handleClick = () => {
+    console.log("clicked");
+  }
    
   return (
       <TouchableOpacity style={styles.container} onPress={openModal}>
@@ -33,6 +41,10 @@ const SavedShoeCard = ({ shoe, handleNavigate }) => {
           <Text style={styles.shoeName}>
             {shoe?.title}
           </Text>
+
+          <TouchableOpacity style={styles.deleteBtn} onPress={handleClick}>
+            <MaterialCommunityIcons name="delete" size={25} color="red" />
+          </TouchableOpacity>
         </View>
 
         {/* Modal */}
