@@ -33,19 +33,20 @@ const styles = StyleSheet.create({
         marginHorizontal: SIZES.medium,
         alignItems:"center",
         justifyContent: 'space-between', // Add this line to adjust spacing between text and delete button
-
     },
     shoeName: {
         fontSize: SIZES.medium,
         fontFamily: "DMBold",
+        width: "75%",
     },   
     deleteBtn: {   
         width: 50,
         height: 50,
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.white,
         borderRadius: SIZES.medium,
         justifyContent: "center",
         alignItems: "center",    
+        marginLeft: 20,
     },
     shoeType: {
         fontSize: SIZES.small + 2,

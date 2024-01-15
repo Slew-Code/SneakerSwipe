@@ -43,7 +43,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDelete }) => {
           </Text>
 
           <TouchableOpacity style={styles.deleteBtn} onPress={handleClick}>
-            <MaterialCommunityIcons name="delete" size={25} color="red" />
+            <MaterialCommunityIcons name="delete" size={35} color="red" />
           </TouchableOpacity>
         </View>
 
