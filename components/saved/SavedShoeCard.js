@@ -5,7 +5,7 @@ import styles from "./SavedShoeCard.style";
 import {checkImageURL} from "../../utils/utility";
 import { MaterialCommunityIcons} from '@expo/vector-icons';
 
-const SavedShoeCard = ({ shoe, handleNavigate, onDelete }) => {
+const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
   
   // Functions for Modal
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -42,7 +42,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDelete }) => {
             {shoe?.title}
           </Text>
 
-          <TouchableOpacity style={styles.deleteBtn} onPress={handleClick}>
+          <TouchableOpacity style={styles.deleteBtn} onPress={() => onDeletePress()}>
             <MaterialCommunityIcons name="delete" size={35} color="red" />
           </TouchableOpacity>
         </View>

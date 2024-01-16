@@ -87,6 +87,7 @@ export default function Saved() {
     };
 
     const removeSavedShoe = async (shoeId) => {
+        /*
         try {
             // Get the current saved shoes
             const savedShoesString = await AsyncStorage.getItem('savedShoes');
@@ -103,6 +104,8 @@ export default function Saved() {
         } catch (error) {
             console.error('Error removing saved shoe:', error);
         }
+        */
+        console.log("Delete Shoe Pressed " + shoeId)
     };
 
     const removeAllSavedShoes = async () => {
@@ -125,14 +128,11 @@ export default function Saved() {
                         shoe={sneakerData[index]}
                         key={shoeId}
                         handleNavigate={() => console.log("Saved Shoe Pressed")}
+                        onDeletePress={() => removeSavedShoe(shoeId)}
                     />
                 ))}
             </ScrollView>   
             
-            <TouchableOpacity onPress={() => removeSavedShoe(1454)}>
-                <Text>Remove Shoe</Text>
-            </TouchableOpacity>
-
             <TouchableOpacity onPress={removeAllSavedShoes} style={{ marginBottom: 20 }}>
                 <Text style={{ color: 'red', textAlign: 'center' }}>Remove All Saved Shoes</Text>
             </TouchableOpacity>           

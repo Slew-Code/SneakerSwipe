@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         //backgroundColor: "red", 
         //backgroundColor: "transparent", 
         width: "100%", 
-        height: "70%", 
+        height: "100%", 
         padding: 20,
     },
     cardWrapper: {   
@@ -71,8 +71,6 @@ const styles = StyleSheet.create({
     },
     image: {
         width: 375,
-        //marginLeft: -10,
-        marginTop: -25,
         height: "50%",
     },
     cardDescription: {
