@@ -126,7 +126,7 @@ export default function Saved() {
             <Text style={{ textAlign: 'center'}}>Saved Shoes:</Text>
             
             <ScrollView style={styles.cardsContainer} >
-                {savedShoes?.map((shoeId, index) => (
+                {savedShoes?.map((shoeId) => (
                     <SavedShoeCard  
                         shoe={sneakerData.find(shoe => shoe.id === shoeId)}
                         key={shoeId}
