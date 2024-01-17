@@ -75,11 +75,12 @@ export default function Saved() {
 
     // POTENTIAL ERROR IF A SAVED SHOE CAN NO LONGER BE FOUND IN THE DATABASE
     const retrieveSavedShoes = async () => {
-        try {
+        try {  
             const savedShoesString = await AsyncStorage.getItem('savedShoes');
             if (savedShoesString) {
                 const savedShoesArray = JSON.parse(savedShoesString);
                 setSavedShoes(savedShoesArray);
+                console.log('Saved Shoes 2:', await AsyncStorage.getItem('savedShoes'));
             }
         } catch (error) {
             console.error('Error retrieving saved shoes:', error);
@@ -87,7 +88,7 @@ export default function Saved() {
     };
 
     const removeSavedShoe = async (shoeId) => {
-        /*
+        
         try {
             // Get the current saved shoes
             const savedShoesString = await AsyncStorage.getItem('savedShoes');
@@ -95,6 +96,8 @@ export default function Saved() {
 
             // Remove the shoe with the given ID
             savedShoesArray = savedShoesArray.filter((id) => id !== shoeId);
+
+            await AsyncStorage.removeItem('savedShoes');
 
             // Update AsyncStorage and state
             await AsyncStorage.setItem('savedShoes', JSON.stringify(savedShoesArray));
@@ -104,7 +107,7 @@ export default function Saved() {
         } catch (error) {
             console.error('Error removing saved shoe:', error);
         }
-        */
+        
         console.log("Delete Shoe Pressed " + shoeId)
     };
 
@@ -124,8 +127,8 @@ export default function Saved() {
             
             <ScrollView style={styles.cardsContainer} >
                 {savedShoes?.map((shoeId, index) => (
-                    <SavedShoeCard
-                        shoe={sneakerData[index]}
+                    <SavedShoeCard  
+                        shoe={sneakerData.find(shoe => shoe.id === shoeId)}
                         key={shoeId}
                         handleNavigate={() => console.log("Saved Shoe Pressed")}
                         onDeletePress={() => removeSavedShoe(shoeId)}
