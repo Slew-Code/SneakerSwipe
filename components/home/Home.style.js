@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         //backgroundColor: '#4FD0E9',
         borderRadius: SIZES.small,
         width: "100%",
-        height: "100%",
+        //height: "100%",
     },
     card: {
         flex: 1,
@@ -110,10 +110,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     modalContent: {
-        width: "90%",
+        width: "100%",
         height: "75%",
         backgroundColor: 'white',
         borderRadius: 10,
+    },
+    modalTitle: {
+        textAlign: "center",
+        fontSize: 24,
+        fontFamily: FONT.medium,
+        marginTop: 10,
+        marginBottom: -30,
     },
     scrollViewContent: {
         flex: 1,

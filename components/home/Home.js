@@ -339,8 +339,9 @@ export default function Home() {
                                     <ScrollView contentContainerStyle={styles.scrollViewContent}>
                                         {selectedCard !== null && data[selectedCard] && (
                                             <>
+                                                <Text style={styles.modalTitle}>{data[selectedCard].title}</Text>
                                                 <Image source={{ uri: data[selectedCard].image }} style={styles.image}/>
-                                                <Text>Title: {data[selectedCard].title}</Text>
+                                                
                                                 <Text>Description: {data[selectedCard].description}</Text>
 
                                                 {/* Add more details from the data[selectedCard] as needed */}
