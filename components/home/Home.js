@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, StyleSheet, Linking, ScrollView } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, Modal, Linking, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -170,15 +170,13 @@ export default function Home() {
             end={{ x: 0, y: 1 }}
         >       
             <View>
-                <View style={styles.searchContainer}>
-                    <View style={styles.searchWrapper}>
-                        <TextInput
-                            style={styles.searchInput}
-                            value={searchQuery}
-                            onChangeText={(text) => setSearchQuery(text)}
-                            placeholder='What are you looking for?'
-                        />
-                    </View>
+                <View style={styles.searchContainer}>           
+                    <TextInput
+                        style={styles.searchInput}
+                        value={searchQuery}
+                        onChangeText={(text) => setSearchQuery(text)}
+                        placeholder='What are you looking for?'
+                    />
 
                     <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
                         <Ionicons name="search" size={25} />
