@@ -34,12 +34,8 @@ const styles = StyleSheet.create({
     },
     tabsContainer: {
         width: "100%",
-        //backgroundColor: "red", 
-        //paddingBottom: SIZES.small,
-        //marginTop: SIZES.small, 
+        marginTop: SIZES.xSmall, 
         paddingLeft: "5%", //replace with a way to center the content 
-        //justifyContent: "center",
-        //alignItems: "center",
     },
     tab: (activeJobType, item) => ({
         paddingVertical: SIZES.small / 2,
@@ -58,13 +54,17 @@ const styles = StyleSheet.create({
         color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
     }),
     cardContainer: {
-        //backgroundColor: "red", 
+        flex: 1,
+        backgroundColor: "red", 
         width: "100%", 
         height: "100%", 
         padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
     cardWrapper: {   
-        //backgroundColor: '#4FD0E9',
+        backgroundColor: '#4FD0E9',
         width: "100%",
         //height: "100%",
         justifyContent: "center",

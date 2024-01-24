@@ -18,12 +18,13 @@ export default function Home() {
     const [searchQuery, setSearchQuery] = useState('');
 
     //Set the default search tab 
-    const [activeJobType, setActiveJobType] = useState("Full-time");
-    const jobTypes = ["Nike", "Adidas", "New Balance", "Popular", "Rare", "New Release"];
+    const [activeShoeType, setActiveShoeType] = useState("Popular");
+    const shoeTypes = ["Popular", "Rare", "New Release","Nike", "Adidas", "New Balance"];
 
     //const [currentIndex, setCurrentIndex] = useState(0);
     const [swiping, setSwiping] = useState(true);
 
+    // ARE BOTH of these needed??
     const [data, setData] = useState([]);
     const [savedShoes, setSavedShoes] = useState([]);
     
@@ -185,18 +186,18 @@ export default function Home() {
 
                 <View style={styles.tabsContainer}>
                     <FlatList
-                        data={jobTypes}
+                        data={shoeTypes}
                         numColumns={3} // Set the number of columns to 3 for two lines with three items each
                         renderItem={({ item }) => (
                             <TouchableOpacity
-                                style={styles.tab(activeJobType, item)}
+                                style={styles.tab(activeShoeType, item)}
                                 onPress={() => {
-                                    setActiveJobType(item);
+                                    setActiveShoeType(item);
                                     //router.push(`/search/${item}`);
                                     console.log("search tab pressed");
                                 }}
                             >
-                                <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+                                <Text style={styles.tabText(activeShoeType, item)}>{item}</Text>
                             </TouchableOpacity>
                         )}
                         keyExtractor={(item) => item}
