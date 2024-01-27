@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
@@ -18,7 +17,7 @@ function MyTabs() {
         tabBarActiveTintColor: 'red',
         tabBarStyle: {
           borderBlockColor: 'white',
-          height: '10%',
+          //height: '10%',
         },
       }}
     >

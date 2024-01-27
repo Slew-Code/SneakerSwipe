@@ -208,22 +208,23 @@ export default function Home() {
 
                 <View style={styles.cardContainer}>
                     <View style={styles.cardWrapper}>
-                        
                         <Swiper
                             //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
                             cards={data} 
+                            cardStyle={styles.card}
                             renderCard={(card) => {
                                 if (!card) {
                                     //return null; // Return null or a placeholder if sneaker data is not available
                                     return (
-                                        <View style={styles.card}>
+                                        <View style={styles.cards}>
                                             <Text style={styles.text}>Loading...</Text>
                                         </View>
                                     );
                                 }  
                                 
                                 return (
-                                    <View style={styles.card}>
+                                    
+                                    <View style={styles.cards}>
                                         <Image source={{ uri: card.image }} style={styles.image} />
                                         <Text style={styles.cardTitle}>{card.title}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
@@ -260,6 +261,7 @@ export default function Home() {
                                             })}
                                         </View>
                                     </View>
+                                    
                                 )
                             }}
                             //keyExtractor={(item) => item.job_id}
@@ -280,7 +282,7 @@ export default function Home() {
                             stackSize={5}
                             //infinite={true}
                             cardVerticalMargin={0}
-                            marginBottom={Dimensions.get('window').height * 0.50}
+                            //marginBottom={Dimensions.get('window').height * 0.50}
                             overlayLabels={{
                                 left: {
                                     title: 'Nope',
@@ -289,14 +291,15 @@ export default function Home() {
                                             backgroundColor: 'red',
                                             borderColor: 'black',
                                             color: 'white',
-                                            borderWidth: 1
+                                            borderWidth: 1,
+                                            marginTop: 30,
+                                            marginRight: 10,
                                         },
                                         wrapper: {
+                                            //backgroundColor: 'red',
                                             flexDirection: 'column',
                                             alignItems: 'flex-end',
                                             justifyContent: 'flex-start',
-                                            marginTop: 30,
-                                            marginLeft: -40
                                         }
                                     }
                                 },
@@ -307,14 +310,15 @@ export default function Home() {
                                             backgroundColor: 'green',
                                             borderColor: 'black',
                                             color: 'white',
-                                            borderWidth: 1
+                                            borderWidth: 1,
+                                            marginTop: 30,
+                                            marginLeft: 10,
                                         },
                                         wrapper: {
+                                            //backgroundColor: 'green',
                                             flexDirection: 'column',
                                             alignItems: 'flex-start',
-                                            justifyContent: 'flex-start',
-                                            marginTop: 30,
-                                            marginLeft: 0
+                                            justifyContent: 'flex-start',  
                                         }
                                     }
                                 }
@@ -322,7 +326,7 @@ export default function Home() {
                             animateOverlayLabelsOpacity // labels fade in when you begin to swipe
                             overlayOpacityHorizontalThreshold={Dimensions.get('window').width / 10} // the point at which the overlay can appear 
                             // The range from which the opacity goes from 0 to 1 for the overlay
-                            inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, -Dimensions.get('window').width / 10, 0, Dimensions.get('window').width / 10, Dimensions.get('window').width / 2]}
+                            inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, 0, 0, 0, Dimensions.get('window').width / 2]}
                         >
                         </Swiper>
 
