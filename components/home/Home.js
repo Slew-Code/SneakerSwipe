@@ -225,7 +225,7 @@ export default function Home() {
                                 return (
                                     
                                     <View style={styles.cards}>
-                                        <Image source={{ uri: card.image }} style={styles.image} />
+                                        <Image source={{ uri: card.image }} style={styles.image}/>
                                         <Text style={styles.cardTitle}>{card.title}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
                                         <Text style={styles.cardDescription}>Available Here:</Text>
@@ -326,7 +326,7 @@ export default function Home() {
                             animateOverlayLabelsOpacity // labels fade in when you begin to swipe
                             overlayOpacityHorizontalThreshold={Dimensions.get('window').width / 10} // the point at which the overlay can appear 
                             // The range from which the opacity goes from 0 to 1 for the overlay
-                            inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 2, 0, 0, 0, Dimensions.get('window').width / 2]}
+                            inputOverlayLabelsOpacityRangeX={[-Dimensions.get('window').width / 3, 0, 0, 0, Dimensions.get('window').width / 3]}
                         >
                         </Swiper>
 

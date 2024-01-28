@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 import { COLORS, FONT, SIZES, SHADOWS } from "../../constants/theme";
 
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     searchContainer: {
         flexDirection: "row",
-        height:50,
+        height:40,
         paddingHorizontal: SIZES.medium,
         marginTop: SIZES.xSmall,   
     },
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     searchBtn: {
         justifyContent: "center",
         alignItems: "center",
-        width: 50,
+        width: 40,
         backgroundColor: COLORS.tertiary,
         borderRadius: SIZES.medium,
         ...SHADOWS.medium,
@@ -54,50 +54,49 @@ const styles = StyleSheet.create({
         color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
     }),
     cardContainer: {
-        backgroundColor: "red", 
-        width: "100%", 
-        height: "100%", 
+        //backgroundColor: "red", 
+        //width: "100%", 
+        //height: Dimensions.get('window').height * 0.6, 
         paddingTop: 20,
         justifyContent: "flex-start",
         alignItems: "center",
     },
     cardWrapper: {   
-        backgroundColor: '#4FD0E9',
+        //backgroundColor: '#4FD0E9',
         //width: "100%",
-        height: "100%",
+        //height: Dimensions.get('window').height * 0.55,
         width: 350,
-        //height: 450,
         justifyContent: "center",
         alignItems: "center",
         //paddingTop: 20,
     },
     card: {
         width: 350,
-        height: 450,
-        //flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
+        height: Dimensions.get('window').height * 0.575,
+        //justifyContent: "flex-start",
+        //alignItems: "center",
         borderRadius: 20,
         //borderWidth: 2,
-        backgroundColor: "white",
+        //backgroundColor: "white",
         marginLeft: -20,
-        ...SHADOWS.medium,
-        shadowColor: COLORS.black,
+        //...SHADOWS.medium,
+        //shadowColor: COLORS.black,
     },
     cards: {
         width: 350,
-        height: 450,
-        //flex: 1,
+        height: Dimensions.get('window').height * 0.575,
         justifyContent: "flex-start",
         alignItems: "center",
         borderRadius: 20,
-        //borderWidth: 2,
         backgroundColor: "white",
+        ...SHADOWS.medium,
+        shadowColor: COLORS.black,
     },
     image: {
         width: 375,
-        height: "55%",
+        height: "58%",
         marginTop: 10,
+        marginBottom: -20,
     },
     cardTitle: {
         textAlign: "center",
@@ -122,8 +121,10 @@ const styles = StyleSheet.create({
         marginBottom: 10, // Add margin at the bottom
     },
     buttonContainer: {
+        //position: 'absolute',
+        //bottom: 20, // Position the container at the bottom
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
@@ -135,8 +136,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     modalContent: {
+        position: 'absolute',
+        bottom: 0,
         width: "100%",
-        height: "75%",
+        height: "80%",
         backgroundColor: 'white',
         borderRadius: 10,
     },
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
     },
     scrollViewContent: {
         flex: 1,
-        //justifyContent: 'center',
+        //justifyContent: 'flex-start',
         alignItems: 'center',
     },
 });  
