@@ -133,7 +133,7 @@ export default function Home() {
     }
 
     const handleClick = () => {
-        console.log("clicked");
+        console.log("Search clicked: " + searchQuery);
     }
 
     const handleBuyPress = (link) => {
@@ -194,7 +194,7 @@ export default function Home() {
                                 onPress={() => {
                                     setActiveShoeType(item);
                                     //router.push(`/search/${item}`);
-                                    console.log("search tab pressed");
+                                    console.log("search tab pressed: " + item);
                                 }}
                             >
                                 <Text style={styles.tabText(activeShoeType, item)}>{item}</Text>
