@@ -36,7 +36,7 @@ export default function Home() {
                 id: 1454,
                 image: "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
                 title: 'Jordan 1 Retro High',
-                description: 'Description for Card 1',
+                description: 'Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1',
                 estimatedMarketValue: 185,
                 links: [
                     "https://stockx.com/air-jordan-1-retro-high-bloodline",  
@@ -340,19 +340,24 @@ export default function Home() {
                             <View style={styles.modalContainer}>
                                     <View style={styles.modalContent}>
                                     <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                                        {selectedCard !== null && data[selectedCard] && (
-                                            <>
-                                                <Text style={styles.modalTitle}>{data[selectedCard].title}</Text>
-                                                <Image source={{ uri: data[selectedCard].image }} style={styles.image}/>
-                                                
-                                                <Text>Description: {data[selectedCard].description}</Text>
-
-                                                {/* Add more details from the data[selectedCard] as needed */}
-                                            </>
-                                        )}
                                         <TouchableOpacity onPress={closeModal}>
                                             <Text>Close Modal</Text>
                                         </TouchableOpacity>
+                                        
+                                        {selectedCard !== null && data[selectedCard] && (
+                                            <>
+                                                <Text style={styles.modalTitle}>{data[selectedCard].title}</Text>
+                                                <View style={styles.modalLogoContainer}>
+                                                    <Image 
+                                                        source={{ uri: data[selectedCard].image }} 
+                                                        style={styles.modalLogoImage}
+                                                        resizeMode='contain'    
+                                                    />
+                                                </View>
+                                                <Text style={styles.modalDescription}>{data[selectedCard].description}</Text>
+                                                {/* Add more details from the data[selectedCard] as needed */}
+                                            </>
+                                        )}
                                     </ScrollView>
                                     </View>                               
                             </View>
