@@ -9,19 +9,21 @@ const useFetch = (endpoint, query) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    /*
+    
     const options = {
         method: 'GET',
         url: 'https://the-sneaker-database.p.rapidapi.com/sneakers',
         headers: {
             'X-RapidAPI-Key': 'efc160b0fbmsha23e82489fd2de8p1072c0jsna12c339be54b',
-            'X-RapidAPI-Host': 'the-sneaker-database.p.rapidapi.com'
+            'X-RapidAPI-Host': 'v1-sneakers.p.rapidapi.com'
+            //'X-RapidAPI-Host': 'the-sneaker-database.p.rapidapi.com'
         },
         params: {
             ...query
         },
-    };*/
+    };
 
+    /*
     const options = {
         method: "GET",
         url: `https://jsearch.p.rapidapi.com/${endpoint}`,
@@ -30,7 +32,7 @@ const useFetch = (endpoint, query) => {
             "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
         },
         params: { ...query },
-    };
+    };*/
 
     const fetchData = async () => {
         setIsLoading(true);

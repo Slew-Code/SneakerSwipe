@@ -28,11 +28,13 @@ export default function Home() {
     const [data, setData] = useState([]);
     const [savedShoes, setSavedShoes] = useState([]);
     
-    // Mock data for the swiper
+    
+    //Mock data for the swiper
     useEffect(() => {
         // Mock data with image URLs and text details for testing
         const mockData = [
             {
+                /*
                 id: 1454,
                 image: "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
                 title: 'Jordan 1 Retro High',
@@ -40,6 +42,18 @@ export default function Home() {
                 estimatedMarketValue: 185,
                 links: [
                     "https://stockx.com/air-jordan-1-retro-high-bloodline",  
+                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
+                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
+                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
+                ]*/
+
+                id: 1454,
+                image: 'https://image.goat.com/attachments/product_template_pictures/images/079/487/442/original/560709_00.png.png',
+                title: 'Yeezy Slides Resin',
+                description: 'Description for Card 1',
+                estimatedMarketValue: 99,
+                links: [
+                    "https://stockx.com/air-jordan-1-retro-high-bloodline",
                     "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
                     "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
                     "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
@@ -78,19 +92,23 @@ export default function Home() {
         ];
         setData(mockData);
     }, []);
-
+    
+    
     /*
     const { data, isLoading, error } = useFetch(
         'getSneakers', {
             limit: 10,
         }
-    )
+    );*/
 
+    /*
     const { data, isLoading, error } = useFetch("search", {
         query: 'React developer',
         num_pages: 1,
-    });
-    // /console.log(data);*/
+    });*/
+    
+    
+    console.log(data);
 
     const delaySwipe = () => {
         setTimeout(() => {

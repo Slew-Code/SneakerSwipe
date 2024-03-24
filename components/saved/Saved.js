@@ -37,12 +37,21 @@ export default function Saved() {
         // Mock data with image URLs and text details for testing
         const mockData = [
             {
+                /*
                 id: 1454,
                 image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
                 title: 'Jordan 1 Retro High',
                 description: 'Description for Card 1',
                 estimatedMarketValue: 185,
                 link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
+                */
+                id: 1454,
+                image: 'https://image.goat.com/attachments/product_template_pictures/images/079/487/442/original/560709_00.png.png',
+                title: 'Yeezy Slides Resin',
+                description: 'Description for Card 1',
+                estimatedMarketValue: 99,
+                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
+
             },
             {
                 id: 2456,
