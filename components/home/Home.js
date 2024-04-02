@@ -12,14 +12,16 @@ import { SIZES } from "../../constants/theme";
 
 import useFetch from "../../hook/useFetch";
 
-export default function Home() {  
+import mockData from '../../constants/mockData.js';
+
+export default function Home() {
 
     //Set the state of the search query, initially empty
     const [searchQuery, setSearchQuery] = useState('');
 
     //Set the default search tab 
     const [activeShoeType, setActiveShoeType] = useState("Popular");
-    const shoeTypes = ["Popular", "Rare", "New Release","Nike", "Adidas", "New Balance"];
+    const shoeTypes = ["Popular", "Rare", "New Release", "Nike", "Adidas", "New Balance"];
 
     //const [currentIndex, setCurrentIndex] = useState(0);
     const [swiping, setSwiping] = useState(true);
@@ -27,89 +29,29 @@ export default function Home() {
     // ARE BOTH of these needed??
     const [data, setData] = useState([]);
     const [savedShoes, setSavedShoes] = useState([]);
-    
+
     
     //Mock data for the swiper
     useEffect(() => {
-        // Mock data with image URLs and text details for testing
-        const mockData = [
-            {
-                /*
-                id: 1454,
-                image: "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
-                title: 'Jordan 1 Retro High',
-                description: 'Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1Description for Card 1',
-                estimatedMarketValue: 185,
-                links: [
-                    "https://stockx.com/air-jordan-1-retro-high-bloodline",  
-                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
-                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
-                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
-                ]*/
-
-                id: 1454,
-                image: 'https://image.goat.com/attachments/product_template_pictures/images/079/487/442/original/560709_00.png.png',
-                title: 'Yeezy Slides Resin',
-                description: 'Description for Card 1',
-                estimatedMarketValue: 99,
-                links: [
-                    "https://stockx.com/air-jordan-1-retro-high-bloodline",
-                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
-                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
-                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
-                ]
-            },
-            {
-                id: 2456,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
-                title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
-                description: 'Description for Card 2',
-                estimatedMarketValue: 1185,
-                //link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
-                links: [
-                    "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky",
-                    "",  //no affiliate 
-                    "", //no affiliate
-                    "https://sale.stadiumgoods.com/nike-sb-dunk-low-ben-jerry-s-chunky-dunky-cu3244-100"
-                ]
-            },
-            {
-                id: 3464,
-                image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
-                title: 'Adidas Gazelle Blue',
-                description: 'Description for Card 3',
-                estimatedMarketValue: 80,
-                //link: "https://stockx.com/adidas-gazelle-blue"
-                links: [
-                    "https://stockx.com/air-jordan-1-retro-high-bloodline",
-                    "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
-                    "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
-                    "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
-                ]
-            },
-
-            
-        ];
         setData(mockData);
-    }, []);
+    }, []); 
     
-    
+
+    /*
+    useEffect(() => {
+        // Mock data with image URLs and text details for testing
+        setData(mockData);
+    }, []); 
+
     /*
     const { data, isLoading, error } = useFetch(
         'getSneakers', {
             limit: 10,
         }
     );*/
-
-    /*
-    const { data, isLoading, error } = useFetch("search", {
-        query: 'React developer',
-        num_pages: 1,
-    });*/
-    
     
     console.log(data);
-
+        
     const delaySwipe = () => {
         setTimeout(() => {
             setSwiping(true); // Enable swiping after a delay
@@ -124,7 +66,7 @@ export default function Home() {
 
 
     // POTENTIAL ERROR IF A SAVED SHOE CAN NO LONGER BE FOUND IN THE DATABASE
-    const onSwipedRight = async (cardIndex) => {    
+    const onSwipedRight = async (cardIndex) => {
         console.log(cardIndex + " Swiped Right")
 
         try {
@@ -140,7 +82,7 @@ export default function Home() {
                 await AsyncStorage.setItem('savedShoes', JSON.stringify(savedShoesArray));
                 setSavedShoes(savedShoesArray);
             }
-            
+
             //await AsyncStorage.setItem('savedShoes', JSON.stringify(cardIndex));
 
         } catch (error) {
@@ -187,9 +129,9 @@ export default function Home() {
             colors={['white', '#dbdbdb']}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
-        >       
+        >
             <View>
-                <View style={styles.searchContainer}>           
+                <View style={styles.searchContainer}>
                     <TextInput
                         style={styles.searchInput}
                         value={searchQuery}
@@ -220,7 +162,7 @@ export default function Home() {
                         )}
                         keyExtractor={(item) => item}
                         scrollEnabled={false}
-                        //centerContent
+                    //centerContent
                     />
                 </View>
 
@@ -228,7 +170,7 @@ export default function Home() {
                     <View style={styles.cardWrapper}>
                         <Swiper
                             //cards={['0', '1', '2', '3', '4', '5', '6', '7']}
-                            cards={data} 
+                            cards={data}
                             cardStyle={styles.card}
                             renderCard={(card) => {
                                 if (!card) {
@@ -238,12 +180,12 @@ export default function Home() {
                                             <Text style={styles.text}>Loading...</Text>
                                         </View>
                                     );
-                                }  
-                                
+                                }
+
                                 return (
-                                    
+
                                     <View style={styles.cards}>
-                                        <Image source={{ uri: card.image }} style={styles.image}/>
+                                        <Image source={{ uri: card.image }} style={styles.image} />
                                         <Text style={styles.cardTitle}>{card.title}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
                                         <Text style={styles.cardDescription}>Available Here:</Text>
@@ -254,16 +196,16 @@ export default function Home() {
                                                 let buttonStyle = {};
 
                                                 if (isLinkAvailable(link)) {
-                                                    if (index === 0) { buttonText = 'StockX' } 
-                                                    else if (index === 1){ buttonText = 'GOAT' }
+                                                    if (index === 0) { buttonText = 'StockX' }
+                                                    else if (index === 1) { buttonText = 'GOAT' }
                                                     else if (index === 2) { buttonText = 'Flight Club' }
                                                     else if (index === 3) { buttonText = 'Stadium Goods' }
-                                                } 
+                                                }
                                                 else {
                                                     buttonText = 'Unavailable';
-                                                    buttonStyle = { backgroundColor: '#CCCCCC', borderColor: '#CCCCCC'};
-                                                }  
-                                                   
+                                                    buttonStyle = { backgroundColor: '#CCCCCC', borderColor: '#CCCCCC' };
+                                                }
+
                                                 return (
                                                     <TouchableOpacity
                                                         key={`link-${index}`}
@@ -275,11 +217,11 @@ export default function Home() {
                                                             {buttonText}
                                                         </Text>
                                                     </TouchableOpacity>
-                                                );       
+                                                );
                                             })}
                                         </View>
                                     </View>
-                                    
+
                                 )
                             }}
                             //keyExtractor={(item) => item.job_id}
@@ -287,7 +229,7 @@ export default function Home() {
                             onSwipedRight={(cardIndex) => onSwipedRight(cardIndex)}
                             onSwipedAll={() => { console.log('onSwipedAll') }}
                             //onSwiping={} change colour of card based on card coordinates
-                            
+
                             //cardIndex={currentIndex}
                             cardIndex={0}
                             onSwiped={onSwiped}
@@ -336,7 +278,7 @@ export default function Home() {
                                             //backgroundColor: 'green',
                                             flexDirection: 'column',
                                             alignItems: 'flex-start',
-                                            justifyContent: 'flex-start',  
+                                            justifyContent: 'flex-start',
                                         }
                                     }
                                 }
@@ -356,20 +298,20 @@ export default function Home() {
                             onRequestClose={closeModal}
                         >
                             <View style={styles.modalContainer}>
-                                    <View style={styles.modalContent}>
+                                <View style={styles.modalContent}>
                                     <ScrollView contentContainerStyle={styles.scrollViewContent}>
                                         <TouchableOpacity onPress={closeModal}>
                                             <Text>Close Modal</Text>
                                         </TouchableOpacity>
-                                        
+
                                         {selectedCard !== null && data[selectedCard] && (
                                             <>
                                                 <Text style={styles.modalTitle}>{data[selectedCard].title}</Text>
                                                 <View style={styles.modalLogoContainer}>
-                                                    <Image 
-                                                        source={{ uri: data[selectedCard].image }} 
+                                                    <Image
+                                                        source={{ uri: data[selectedCard].image }}
                                                         style={styles.modalLogoImage}
-                                                        resizeMode='contain'    
+                                                        resizeMode='contain'
                                                     />
                                                 </View>
                                                 <Text style={styles.modalDescription}>{data[selectedCard].description}</Text>
@@ -377,7 +319,7 @@ export default function Home() {
                                             </>
                                         )}
                                     </ScrollView>
-                                    </View>                               
+                                </View>
                             </View>
                         </Modal>
 

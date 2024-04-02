@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 import SavedShoeCard from './SavedShoeCard';
 import styles from "./Saved.style";
+import mockData from '../../constants/mockData.js';
 
 export default function Saved() {
     const [savedShoes, setSavedShoes] = useState([]);
@@ -35,44 +36,6 @@ export default function Saved() {
 
     useEffect(() => {
         // Mock data with image URLs and text details for testing
-        const mockData = [
-            {
-                /*
-                id: 1454,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
-                title: 'Jordan 1 Retro High',
-                description: 'Description for Card 1',
-                estimatedMarketValue: 185,
-                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
-                */
-                id: 1454,
-                image: 'https://image.goat.com/attachments/product_template_pictures/images/079/487/442/original/560709_00.png.png',
-                title: 'Yeezy Slides Resin',
-                description: 'Description for Card 1',
-                estimatedMarketValue: 99,
-                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
-
-            },
-            {
-                id: 2456,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
-                title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
-                description: 'Description for Card 2',
-                estimatedMarketValue: 1185,
-                link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
-
-            },
-            {
-                id: 3464,
-                image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
-                title: 'Adidas Gazelle Blue',
-                description: 'Description for Card 3',
-                estimatedMarketValue: 80,
-                link: "https://stockx.com/adidas-gazelle-blue"
-
-            },
-
-        ];
         setSneakerData(mockData);
     }, []);
     
