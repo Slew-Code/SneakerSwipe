@@ -1,6 +1,19 @@
 const mockData = [
     {
-        id: 1454,
+        id: 1,
+        image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
+        title: 'Jordan 1 Retro High',
+        description: 'Description for Card 1',
+        estimatedMarketValue: 185,
+        links: [
+            "https://stockx.com/air-jordan-1-retro-high-bloodline",
+            "https://goat.com/sneakers/air-jordan-1-high-retro-og-bred-2019-555088-062",  //no affiliate 
+            "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
+            "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
+        ]
+    },
+    {
+        id: 2,
         image: 'https://image.goat.com/attachments/product_template_pictures/images/079/487/442/original/560709_00.png.png',
         title: 'Yeezy Slides Resin',
         description: 'Description for Card 1',
@@ -13,12 +26,11 @@ const mockData = [
         ]
     },
     {
-        id: 2456,
+        id: 3,
         image: 'https://image.goat.com/375/attachments/product_template_pictures/images/081/096/394/original/616017_00.png.png',
         title: 'Nike SB Dunk Low Ben & Jerry\'s Chunky Dunky',
         description: 'Description for Card 2',
         estimatedMarketValue: 1185,
-        //link: "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky"
         links: [
             "https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky",
             "",  //no affiliate 
@@ -27,7 +39,7 @@ const mockData = [
         ]
     },
     {
-        id: 3464,
+        id: 4,
         image: "https://image.goat.com/375/attachments/product_template_pictures/images/033/250/439/original/BZ0028.png.png",
         title: 'Adidas Gazelle Blue',
         description: 'Description for Card 3',
@@ -39,15 +51,7 @@ const mockData = [
             "https://flightclub.com/air-jordan-1-retro-high-og-black-gym-red-white-140229", //no affiliate
             "https://sale.stadiumgoods.com/air-jordan-1-high-og-bloodline-meant-to-fly-555088-062"
         ]
-    }
-    /*
-                id: 1454,
-                image: 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
-                title: 'Jordan 1 Retro High',
-                description: 'Description for Card 1',
-                estimatedMarketValue: 185,
-                link: "https://stockx.com/air-jordan-1-retro-high-bloodline"
-                */
+    }              
 ];
 
 export default mockData;

@@ -50,7 +50,7 @@ export default function Home() {
         }
     );*/
     
-    console.log(data);
+    //console.log(data);
         
     const delaySwipe = () => {
         setTimeout(() => {
