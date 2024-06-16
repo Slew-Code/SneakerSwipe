@@ -60,7 +60,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
                 
                 <Image source={{ uri: shoe?.image }} style={styles.image} />
                 <Text>Title: {shoe?.title}</Text>
-                <Text>Description: {shoe?.description}</Text> 
+                <Text>Story: {shoe?.story}</Text> 
 
                 <TouchableOpacity onPress={closeModal}>
                   <Text>Close Modal</Text>

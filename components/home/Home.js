@@ -191,24 +191,23 @@ export default function Home() {
                                         <Text style={styles.cardDescription}>Available Here:</Text>
                                         <View style={styles.buttonContainer}>
 
-                                            {card.links.map((link, index) => {
+                                            {Object.entries(card.links).map(([key, link]) => {
                                                 let buttonText = '';
                                                 let buttonStyle = {};
 
                                                 if (isLinkAvailable(link)) {
-                                                    if (index === 0) { buttonText = 'StockX' }
-                                                    else if (index === 1) { buttonText = 'GOAT' }
-                                                    else if (index === 2) { buttonText = 'Flight Club' }
-                                                    else if (index === 3) { buttonText = 'Stadium Goods' }
-                                                }
-                                                else {
+                                                    if (key === 'stockX') { buttonText = 'StockX' }
+                                                    else if (key === 'goat') { buttonText = 'GOAT' }
+                                                    else if (key === 'flightClub') { buttonText = 'Flight Club' }
+                                                    else if (key === 'stadiumGoods') { buttonText = 'Stadium Goods' }
+                                                } else {
                                                     buttonText = 'Unavailable';
                                                     buttonStyle = { backgroundColor: '#CCCCCC', borderColor: '#CCCCCC' };
                                                 }
 
                                                 return (
                                                     <TouchableOpacity
-                                                        key={`link-${index}`}
+                                                        key={`link-${key}`}
                                                         onPress={() => handleBuyPress(link)}
                                                         style={[styles.buyButton, buttonStyle]}
                                                         disabled={!isLinkAvailable(link)}
@@ -221,6 +220,7 @@ export default function Home() {
                                             })}
                                         </View>
                                     </View>
+
 
                                 )
                             }}
@@ -314,7 +314,7 @@ export default function Home() {
                                                         resizeMode='contain'
                                                     />
                                                 </View>
-                                                <Text style={styles.modalDescription}>{data[selectedCard].description}</Text>
+                                                <Text style={styles.modalDescription}>{data[selectedCard].story}</Text>
                                                 {/* Add more details from the data[selectedCard] as needed */}
                                             </>
                                         )}
