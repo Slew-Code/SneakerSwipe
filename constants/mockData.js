@@ -30,9 +30,9 @@ const mockData = [
     {
         "id": "8838d55a-6579-4f6c-83d1-48716495d597",
         "image": 'https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png',
-        "title": 'Jordan 1 Retro High',
+        "name": 'Jordan 1 Retro High',
         "story": 'Description for Card 1',
-        "estimatedMarketValue": 185,
+        "retailPrice": 185,
         "links": {
             "flightClub": "https://flightclub.com/crazy-iiinfinity-white-black-ig6303",
             "goat": "https://goat.com/sneakers/crazy-iiinfinity-white-black-ig6303",

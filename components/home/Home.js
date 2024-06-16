@@ -186,8 +186,8 @@ export default function Home() {
 
                                     <View style={styles.cards}>
                                         <Image source={{ uri: card.image }} style={styles.image} />
-                                        <Text style={styles.cardTitle}>{card.title}</Text>
-                                        <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
+                                        <Text style={styles.cardTitle}>{card.name}</Text>
+                                        <Text style={styles.cardDescription}>Estimated Market Value: {card.retailPrice}</Text>
                                         <Text style={styles.cardDescription}>Available Here:</Text>
                                         <View style={styles.buttonContainer}>
 
@@ -306,7 +306,7 @@ export default function Home() {
 
                                         {selectedCard !== null && data[selectedCard] && (
                                             <>
-                                                <Text style={styles.modalTitle}>{data[selectedCard].title}</Text>
+                                                <Text style={styles.modalTitle}>{data[selectedCard].name}</Text>
                                                 <View style={styles.modalLogoContainer}>
                                                     <Image
                                                         source={{ uri: data[selectedCard].image }}

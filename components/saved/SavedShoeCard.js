@@ -39,7 +39,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
 
         <View style={styles.textContainer}>
           <Text style={styles.shoeName}>
-            {shoe?.title}
+            {shoe?.name}
           </Text>
 
           <TouchableOpacity style={styles.deleteBtn} onPress={() => onDeletePress()}>
@@ -59,7 +59,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
               <ScrollView contentContainerStyle={styles.scrollViewContent}> 
                 
                 <Image source={{ uri: shoe?.image }} style={styles.image} />
-                <Text>Title: {shoe?.title}</Text>
+                <Text>Title: {shoe?.name}</Text>
                 <Text>Story: {shoe?.story}</Text> 
 
                 <TouchableOpacity onPress={closeModal}>
