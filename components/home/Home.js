@@ -3,6 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, Dimensions, FlatList, Image, M
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
 import { LinearGradient } from 'expo-linear-gradient';
+import { checkImageURL } from "../../utils/utility";
 
 import Swiper from 'react-native-deck-swiper'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -185,7 +186,14 @@ export default function Home() {
                                 return (
 
                                     <View style={styles.cards}>
-                                        <Image source={{ uri: card.image }} style={styles.image} />
+                                        <Image 
+                                            source={{
+                                                uri: checkImageURL(card.image.thumbnail)
+                                                    ? card.image.thumbnail
+                                                    :  "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
+                                            }} 
+                                            style={styles.image} 
+                                        />
                                         <Text style={styles.cardTitle}>{card.name}</Text>
                                         <Text style={styles.cardDescription}>Estimated Market Value: {card.retailPrice}</Text>
                                         <Text style={styles.cardDescription}>Available Here:</Text>
@@ -309,7 +317,11 @@ export default function Home() {
                                                 <Text style={styles.modalTitle}>{data[selectedCard].name}</Text>
                                                 <View style={styles.modalLogoContainer}>
                                                     <Image
-                                                        source={{ uri: data[selectedCard].image }}
+                                                        source={{
+                                                            uri: checkImageURL(data[selectedCard].image.thumbnail)
+                                                                ? data[selectedCard].image.thumbnail
+                                                                : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
+                                                        }}
                                                         style={styles.modalLogoImage}
                                                         resizeMode='contain'
                                                     />

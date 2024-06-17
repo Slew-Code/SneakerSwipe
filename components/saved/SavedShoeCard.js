@@ -28,8 +28,8 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
         <TouchableOpacity style={styles.logoContainer} onPress={openModal}>
           <Image
             source={{
-              uri: checkImageURL(shoe.image)
-                ? shoe.image
+              uri: checkImageURL(shoe.image.thumbnail)
+                ? shoe.image.thumbnail
                 : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
             }}
             resizeMode='contain'
@@ -58,7 +58,7 @@ const SavedShoeCard = ({ shoe, handleNavigate, onDeletePress }) => {
             <View style={styles.modalContent}>
               <ScrollView contentContainerStyle={styles.scrollViewContent}> 
                 
-                <Image source={{ uri: shoe?.image }} style={styles.image} />
+                <Image source={{ uri: shoe?.image.thumbnail }} style={styles.image} />
                 <Text>Title: {shoe?.name}</Text>
                 <Text>Story: {shoe?.story}</Text> 
 
