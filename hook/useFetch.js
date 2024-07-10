@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-//import RAPID_API_KEY from '.env'
-//const rapidApiKey = RAPID_API_KEY;
+const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
 
 const useFetch = (endpoint, query) => {
     const [data, setData] = useState([]);
@@ -14,9 +13,8 @@ const useFetch = (endpoint, query) => {
         method: 'GET',
         url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
         headers: {
-            'X-RapidAPI-Key': '14949fecd6msh1119f45ab802f9cp1f50d5jsn594a741aa285',
+            'X-RapidAPI-Key': rapidApiKey,
             'X-RapidAPI-Host': 'v1-sneakers.p.rapidapi.com'
-            //'X-RapidAPI-Host': 'the-sneaker-database.p.rapidapi.com'
         },
         params: {
             ...query
