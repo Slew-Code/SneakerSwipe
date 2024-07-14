@@ -195,7 +195,7 @@ export default function Home() {
                                             style={styles.image} 
                                         />
                                         <Text style={styles.cardTitle}>{card.name}</Text>
-                                        <Text style={styles.cardDescription}>Estimated Market Value: {card.retailPrice}</Text>
+                                        <Text style={styles.cardDescription}>Estimated Market Value: {card.estimatedMarketValue}</Text>
                                         <Text style={styles.cardDescription}>Available Here:</Text>
                                         <View style={styles.buttonContainer}>
 

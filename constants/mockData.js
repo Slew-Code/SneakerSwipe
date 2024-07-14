@@ -28,22 +28,30 @@ const mockData = [
         },
     */
     {
+        "brand": "adidas",
+        "colorway": "Core Black/Cloud White/Chalk White",
+        "estimatedMarketValue": 74,
+        "gender": "men",
         "id": "8838d55a-6579-4f6c-83d1-48716495d597",
         "image": {
                 "360": [],
                 "original": "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
                 "small": "https://image.goat.com/375/attachments/product_template_pictures/images/079/484/521/original/508079_00.png.png",
                 "thumbnail": "https://image.goat.com/375/attachments/product_template_pictures/images/098/451/956/original/1280492_00.png.png"
-            },
-        "name": 'Jordan 1 Retro High',
-        "story": 'Description for Card 1',
-        "retailPrice": 185,
+        },
         "links": {
             "flightClub": "https://flightclub.com/crazy-iiinfinity-white-black-ig6303",
             "goat": "https://goat.com/sneakers/crazy-iiinfinity-white-black-ig6303",
             "stadiumGoods": "",
             "stockX": "https://stockx.com/adidas-crazy-iiinfinity-stormtrooper"
         },
+        "name": "adidas Crazy IIInfinity Stormtrooper",
+        "releaseDate": "2024-12-30",
+        "releaseYear": "2024",
+        "retailPrice": 160,
+        "silhouette": "Crazy IIInfinity",
+        "sku": "IG6303",
+        "story": "The adidas Crazy IIInfinity ‘Stormtrooper’ presents a retro-inspired lifestyle silhouette that takes design cues from the Crazy 1, formerly known as The Kobe. The upper features a zippered shroud in black textile, contrasted by white molded foam paneling with debossed three-stripes at the midfoot. A reinforced rubber toe cap gives a nod to The Kobe 2, along with adidas’ shell-toe heritage. Underfoot, the herringbone-traction rubber outsole reveals an exposed TPU shank for midfoot stability."
     }
     /*
     {
