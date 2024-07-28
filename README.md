@@ -18,6 +18,7 @@ A cross-platform mobile application built with React Native. This app allows use
 - **FlatList**: Displays sneaker categories and lists efficiently.
 - **Modal**: Shows detailed information about sneakers in a modal view.
 - **External Linking**: Links to external sites like StockX, GOAT, and others for purchasing sneakers.
+  ![Output sample](https://github.com/Slew-Code/SneakerSwipe/blob/master/assets/images/Demo.gif)
 
 ## Installation
 
