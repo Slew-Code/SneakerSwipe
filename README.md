@@ -51,5 +51,5 @@ A cross-platform mobile application built with React Native. This app allows use
        
 ## Usage
 1. Open the app on your mobile device.
-2. 2. Swipe left to dismiss and right to save sneakers.
+2. Swipe left to dismiss and right to save sneakers.
 3. Tap on a sneaker card to view more details and purchase options.
